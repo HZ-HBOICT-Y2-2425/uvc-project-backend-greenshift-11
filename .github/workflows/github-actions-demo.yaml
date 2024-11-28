@@ -2,13 +2,8 @@ name: Backend Pipeline
 
 on:
   push:
-    branches:
-      - main
-      - backendtests
   pull_request:
-    branches:
-      - main
-      - backendtests
+
 
 jobs:
   backend-pipeline:
