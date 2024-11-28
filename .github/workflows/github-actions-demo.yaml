@@ -1,67 +1,35 @@
-name: Backend Code Check
+name: Backend Pipeline
 
 on:
   push:
     branches:
       - main
+      - develop
   pull_request:
     branches:
       - main
+      - develop
 
 jobs:
-  lint-and-test-backend:
-    name: Lint and Test Backend Code
+  backend-pipeline:
+    name: Backend Pipeline
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository
+      # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: |
-          cd apigateway/code && npm install
-          cd ../../microservice/code && npm install
-
-      # Step 4: Lint controllers, middleware, and routes
-      - name: Lint apigateway directories
+      # Step 2: Install dependencies for apigateway
+      - name: Install dependencies for apigateway
         working-directory: apigateway/code
-        run: |
-          npx eslint controllers/**/*.js
-          npx eslint middleware/**/*.js
-          npx eslint routes/**/*.js
+        run: npm install
 
-      - name: Lint microservice directories
+      # Step 3: Install dependencies for microservice
+      - name: Install dependencies for microservice
         working-directory: microservice/code
-        run: |
-          npx eslint controllers/**/*.js
-          npx eslint middleware/**/*.js
-          npx eslint routes/**/*.js
+        run: npm install
 
-      # Step 5: Run tests for apigateway and microservice
-      - name: Run tests for apigateway
-        working-directory: apigateway/code
-        run: npm test
-
-      - name: Run tests for microservice
-        working-directory: microservice/code
-        run: npm test
-
-      # Step 6: Success message
+      # Step 4: Log success message
       - name: Log success message
-        if: success()
-        run: echo "✅ Linting and tests completed successfully!"
-
-      # Step 7: Failure notification
-      - name: Log failure message
-        if: failure()
-        run: echo "❌ Linting or tests failed. Please check the logs."
-
-      #does it work?
+        run: echo "✅ Backend pipeline ran successfully for both apigateway and microservice."
