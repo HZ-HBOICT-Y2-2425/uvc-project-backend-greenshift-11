@@ -1,0 +1,80 @@
+name: GitHub Actions Pipeline
+run-name: ${{ github.actor }} is testing GitHub Actions 🚀
+
+on:
+  push:
+    branches:
+      - main
+      - pipeline
+  pull_request:
+    branches:
+      - main
+
+# Define permissions for the workflow, required for all jobs in the pipeline
+permissions:
+  contents: read    # Minimum required to check out code
+  packages: read    # Minimum required for accessing packages (if necessary)
+  statuses: write   # To report job statuses
+
+jobs:
+  Build-and-Test:
+    runs-on: ubuntu-latest
+    name: Build and Test Job
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run the build process
+      - name: Build the software
+        run: npm run build
+
+      # Step 5: (Optional) Run tests
+      # - name: Run tests
+      #   run: npm test -- --watchAll=false
+
+      # Step 6: Log success message
+      - name: Log success message
+        if: success()
+        run: echo "✅ Build and tests completed successfully!"
+
+  Lint:
+    runs-on: ubuntu-latest
+    name: Lint Code Base
+
+    permissions:
+      contents: read    # Required to fetch the code
+      packages: read    # Minimum required to access packages
+      statuses: write   # To report job status (Super-Linter needs this)
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensure the full git history is available for the linter
+
+      - name: Run Super-Linter
+        uses: super-linter/super-linter@v7.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}         # Required for reporting results
+          VALIDATE_ALL_CODEBASE: false                      # Validate only changed files
+          FILTER_REGEX_INCLUDE: "^src/.*$"                  # Lint only files in the src/ folder
+          DEFAULT_BRANCH: main                              # Specify the default branch for comparison
+
+           # Custom email-like notifications by ensuring failure
+      - name: Notify on Failure  # Step to notify if the linter fails
+        if: failure()  # Runs only if the previous step (Super-Linter) fails
+        run: |
+          echo "❌ Linter failed. Please check the results above."  # Prints a failure message to the logs
+          echo "Check the workflow details at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"  # Provides a link to the workflow run details
