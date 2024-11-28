@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-      - develop
+      - backendtests
   pull_request:
     branches:
       - main
-      - develop
+      - backendtests
 
 jobs:
   backend-pipeline:
