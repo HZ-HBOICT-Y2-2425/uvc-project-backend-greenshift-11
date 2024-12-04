@@ -1,13 +1,14 @@
 import express from 'express';
+import cors from 'cors';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 const router = express.Router();
 
 // create a proxy for each microservice
-const microserviceProxy = createProxyMiddleware({
-  target: 'http://microservice:3011',
+const applianceProxy = createProxyMiddleware({
+  target: 'http://appliances:3011',
   changeOrigin: true
 });
 
-router.use('/microservice', microserviceProxy);
+router.use('/appliances', cors(), appliancesProxy);
 
 export default router;
