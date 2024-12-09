@@ -19,6 +19,7 @@ export async function addUser(req, res) {
         user: req.body.name,
         email: req.body.email,
         password: hashedPassword,
+        currency: 0
     };
     userList.push(newUser);
     res.status(201).json({ message: 'User registered successfully', user: newUser });
