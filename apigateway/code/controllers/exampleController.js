@@ -45,3 +45,8 @@ export async function logoutUser(req, res) {
 function generateAccessToken(user) {
     return sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 }
+
+//get all users
+export async function getUsers(req, res) {
+    res.status(200).send(userList);
+}
