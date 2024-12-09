@@ -1,36 +1,47 @@
-import { JSONFilePreset } from "lowdb/node";
+import { hash, compare } from 'bcrypt';
+import pkg from 'jsonwebtoken';
+const { sign } = pkg;
 
-// Read or create db.json
-// defaultData specifies the structure of the database
-const defaultData = { meta: {"tile": "List of animals","date": "September 2024"}, animals : [] }
-const db = await JSONFilePreset('db.json', defaultData)
-const animals = db.data.animals
+const userList = []; // Temporary in-memory storage
 
-export async function responseExample(req, res) {
-  res.status(200).send(animals);
+export async function addUser(req, res) {
+    if (!req.body.name || !req.body.password || !req.body.email) {
+        return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    const userExists = userList.some((user) => user.user === req.body.name);
+    if (userExists) {
+        return res.status(409).json({ message: 'User already exists' });
+    }
+
+    const hashedPassword = await hash(req.body.password, 10);
+    const newUser = {
+        user: req.body.name,
+        email: req.body.email,
+        password: hashedPassword,
+    };
+    userList.push(newUser);
+    res.status(201).json({ message: 'User registered successfully', user: newUser });
 }
 
-export async function updateExample(req, res) {
-  // fixme check if id exists
-  let id = req.query.id;
-  let name = req.query.name;
-  let type = req.query.type;
-  let time = new Date().toLocaleString();
-  let animal = {id: id, name: name, type: type, time: time};  
-  // todo remove log
-  console.log(animal);
-  animals.push(animal);
-  await db.write();
-
-  res.status(201).send(`I added this client: ${JSON.stringify(animal)}?`);
+export async function loginUser(req, res) {
+    const user = userList.find((u) => u.user === req.body.name);
+    if (!user) {
+        return res.status(404).json({ message: 'User does not exist' });
+    }
+    if (await compare(req.body.password, user.password)) {
+        const accessToken = generateAccessToken({ user: req.body.name });
+        res.json({ accessToken, message: 'Login successful' });
+    } else {
+        res.status(401).json({ message: 'Incorrect password' });
+    }
 }
 
-export async function responseByIdExample(req, res) {
-  let id = req.params.id;
-  let animal = animals.find(animal => animal.id === id);
-  if (animal) {
-    res.status(200).send(animal);
-  } else {
-    res.status(404).send('Animal not found');
-  }
+export async function logoutUser(req, res) {
+    // Logout logic placeholder
+    res.status(204).send('Logged out');
+}
+
+function generateAccessToken(user) {
+    return sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 }
