@@ -25,16 +25,16 @@ export async function addUser(req, res) {
 }
 
 export async function loginUser(req, res) {
-    const user = userList.find((u) => u.user === req.body.name);
-    if (!user) {
-        return res.status(404).json({ message: 'User does not exist' });
-    }
-    if (await compare(req.body.password, user.password)) {
-        const accessToken = generateAccessToken({ user: req.body.name });
-        res.json({ accessToken, message: 'Login successful' });
-    } else {
-        res.status(401).json({ message: 'Incorrect password' });
-    }
+  const user = userList.find((u) => u.user === req.body.name);
+  if (!user) {
+      return res.status(404).json({ message: 'User does not exist' });
+  }
+  if (await compare(req.body.password, user.password)) {
+      const accessToken = generateAccessToken({ user: req.body.name });
+      res.json({ accessToken, message: 'Login successful' });
+  } else {
+      res.status(401).json({ message: 'Incorrect password' });
+  }
 }
 
 export async function logoutUser(req, res) {
