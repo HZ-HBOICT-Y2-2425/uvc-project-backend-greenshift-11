@@ -20,7 +20,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "lowdb": "^7.0.1"
+    "lowdb": "^7.0.1",
+    "mongoose": "^8.8.4"
   },
   "devDependencies": {
     "http-proxy-middleware": "^3.0.3",

@@ -1,41 +1,89 @@
 import { hash, compare } from 'bcrypt';
 import pkg from 'jsonwebtoken';
 const { sign } = pkg;
+import fs from 'fs';
+import path from 'path';
 
-const userList = []; // Temporary in-memory storage
+// Get the absolute path to the db.json file
+const dbPath = path.resolve('./db.json');
+
+// Helper function to read from db.json
+const readDatabase = () => {
+  const data = fs.readFileSync(dbPath, 'utf-8');
+  return JSON.parse(data);
+};
+
+// Helper function to write to db.json
+const writeDatabase = (data) => {
+  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf-8');
+};
 
 export async function addUser(req, res) {
-    if (!req.body.name || !req.body.password || !req.body.email) {
+    try {
+      const { name, email, password } = req.body;
+  
+      if (!name || !email || !password) {
         return res.status(400).json({ message: 'Missing required fields' });
-    }
-
-    const userExists = userList.some((user) => user.user === req.body.name);
-    if (userExists) {
+      }
+  
+      const db = readDatabase();
+      const userExists = db.users.some((user) => user.user === name);
+  
+      if (userExists) {
         return res.status(409).json({ message: 'User already exists' });
-    }
-
-    const hashedPassword = await hash(req.body.password, 10);
-    let newUser = {
-        user: req.body.name,
-        email: req.body.email,
+      }
+  
+      const hashedPassword = await hash(password, 10);
+  
+      const newUser = {
+        id: db.users.length + 1,
+        user: name,
+        email,
         password: hashedPassword,
-        currency: 0
-    };
-    userList.push(newUser);
-    res.status(201).json({ message: 'User registered successfully', user: newUser });
-}
+        currency: 0,
+        notes: [],
+      };
+  
+      db.users.push(newUser);
+      writeDatabase(db);
+  
+      res.status(201).json({ message: 'User registered successfully', user: newUser });
+    } catch (error) {
+      console.error('Error adding user:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  }
 
-export async function loginUser(req, res) {
-  const user = userList.find((u) => u.user === req.body.name);
-  if (!user) {
-      return res.status(404).json({ message: 'User does not exist' });
-  }
-  if (await compare(req.body.password, user.password)) {
-      const accessToken = generateAccessToken({ user: req.body.name });
-      res.json({ accessToken, message: 'Login successful' });
-  } else {
-      res.status(401).json({ message: 'Incorrect password' });
-  }
+  export async function loginUser(req, res) {
+    try {
+        const { name, password } = req.body;
+
+        if (!name || !password) {
+            return res.status(400).json({ message: 'Name and password are required' });
+        }
+
+        // Load users from db.json
+        const db = readDatabase();
+        const user = db.users.find((u) => u.user === name);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User does not exist' });
+        }
+
+        // Compare provided password with hashed password
+        const isPasswordValid = await compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Incorrect password' });
+        }
+
+        // Generate an access token
+        const accessToken = generateAccessToken({ user: user.user });
+
+        res.json({ accessToken, username: user.user, message: 'Login successful' });
+    } catch (error) {
+        console.error('Error during login:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 }
 
 export async function logoutUser(req, res) {
@@ -49,5 +97,56 @@ function generateAccessToken(user) {
 
 //get all users
 export async function getUsers(req, res) {
-    res.status(200).send(userList);
-}
+    try {
+      const db = readDatabase();
+      res.status(200).json(db.users);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  }
+
+// Add a note for a user
+export async function addNote(req, res) {
+    try {
+      const { user, note, date } = req.body;
+  
+      const db = readDatabase();
+      const foundUser = db.users.find((u) => u.user === user);
+  
+      if (!foundUser) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      if (!note || !date) {
+        return res.status(400).json({ message: 'Note and date are required' });
+      }
+  
+      foundUser.notes.push({ date, note });
+      writeDatabase(db);
+  
+      res.status(201).json({ message: 'Note added successfully', notes: foundUser.notes });
+    } catch (error) {
+      console.error('Error adding note:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  }
+
+// Get notes for a user
+export async function getNotes(req, res) {
+    try {
+      const { user } = req.params;
+  
+      const db = readDatabase();
+      const foundUser = db.users.find((u) => u.user === user);
+  
+      if (!foundUser) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.status(200).json({ notes: foundUser.notes });
+    } catch (error) {
+      console.error('Error fetching notes:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  }

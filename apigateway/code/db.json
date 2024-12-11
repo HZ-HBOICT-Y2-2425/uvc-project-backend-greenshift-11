@@ -1,7 +1,21 @@
 {
   "meta": {
-    "tile": "List of animals",
+    "tile": "List of users",
     "date": "September 2024"
   },
-  "users" : []
+  "users": [
+    {
+      "id": 1,
+      "user": "JohnTheGreat",
+      "email": "aydotjohn@gmail.com",
+      "password": "$2b$10$VI2bJogff5jqjQhlx2c14uicSPEPoHxyG2fGxKFFGEDSAZMuQjcTS",
+      "currency": 0,
+      "notes": [
+        {
+          "date": "2024-12-11",
+          "note": "note"
+        }
+      ]
+    }
+  ]
 }
