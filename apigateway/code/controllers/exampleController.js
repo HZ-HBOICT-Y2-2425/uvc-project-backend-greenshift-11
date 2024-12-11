@@ -15,7 +15,7 @@ export async function addUser(req, res) {
     }
 
     const hashedPassword = await hash(req.body.password, 10);
-    const newUser = {
+    let newUser = {
         user: req.body.name,
         email: req.body.email,
         password: hashedPassword,
