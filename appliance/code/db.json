@@ -3,7 +3,7 @@
     "tile": "List of appliances",
     "date": "December 2024"
   },
-  "animals": [
+  "appliances": [
     {
       "id": 1, 
       "brand": "Henry",

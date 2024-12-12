@@ -2,9 +2,9 @@ import { JSONFilePreset } from "lowdb/node";
 
 // Read or create db.json
 // defaultData specifies the structure of the database
-const defaultData = { meta: {"tile": "List of appliances","date": "September 2024"}, appliances : [] }
+const defaultData = { meta: {"tile": "List of appliances","date": "December 2024"}, appliances : [] }
 const db = await JSONFilePreset('db.json', defaultData)
-const appliances = db.data.appliances;
+const appliances = db.data.appliances
 
 export async function getAllAppliances(req, res) {
   const applianceUrls = appliances.map(appliance => `/co2/${appliance.id}`);
@@ -79,8 +79,7 @@ export async function deleteAppliancesByIDs(req, res) {
         console.log(`There is no appliance with id: ${id}`);
       }
     }
-    indexes.forEach(index => appliances.splice(index)); //zakładając że mogą być nie pokolei
-    //animals.splice(indexes[0], indexes.length);
+    indexes.forEach(index => appliances.splice(index)); 
     let IDsLeft = [];
     appliances.forEach(appliance => {IDsLeft.push(appliance.id)});
     await db.write();

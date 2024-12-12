@@ -9,7 +9,7 @@ const microserviceProxy = createProxyMiddleware({
   changeOrigin: true
 });
 const applianceProxy = createProxyMiddleware({
-  target: 'http://appliance:3011',
+  target: 'http://appliance:3012',
   changeOrigin: true
 });
 
