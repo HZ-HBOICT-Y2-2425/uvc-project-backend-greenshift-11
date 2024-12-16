@@ -16,6 +16,27 @@
           "note": "note"
         }
       ]
+    },
+    {
+      "id": 2,
+      "user": "Joeri",
+      "email": "joeriharreman@zeelandnet.nl",
+      "password": "$2b$10$LWjNiPMLUnq6hVgWqtwyKeuUHsWLyUjAPe9Dd.g9Ua.dzJDhVB8AG",
+      "currency": 0,
+      "notes": [
+        {
+          "date": "2024-12-04",
+          "note": "hellp"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "user": "Joeri2",
+      "email": "as@something",
+      "password": "$2b$10$Ryor97EjTptOndMI/AucRO0FX6VSup/OlDLWaxxF6vUMfF7cEGntW",
+      "currency": 0,
+      "notes": []
     }
   ]
 }
