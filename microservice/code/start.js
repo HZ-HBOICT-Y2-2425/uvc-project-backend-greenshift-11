@@ -3,12 +3,14 @@ import express from 'express';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: 'variables.env' });
 import indexRouter from './routes/index.js';
+import tasksRouter from './routes/tasks.js';
 
 const app = express();
 
 // support json encoded and url-encoded bodies, mainly used for post and update
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/api', tasksRouter);
 
 app.use('/', indexRouter);
 

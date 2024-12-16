@@ -12,10 +12,26 @@
       "currency": 0,
       "notes": [
         {
-          "date": "2024-12-11",
-          "note": "note"
+          "date": "2024-12-14",
+          "note": "This is an example of a note "
+        },
+        {
+          "date": "2024-12-14",
+          "note": "This is a new note example "
+        },
+        {
+          "date": "2024-12-15",
+          "note": "Move the tasks to the right hand side and make the calendar bar central with the search as a header."
         }
       ]
+    },
+    {
+      "id": 2,
+      "user": "John",
+      "email": "Therealfrans@gmail.com",
+      "password": "$2b$10$S407kycnhwBqJtUrgZAmN.LtYi/Shzo3dL8gkfQVreviWpmYJsMae",
+      "currency": 0,
+      "notes": []
     }
   ]
 }
