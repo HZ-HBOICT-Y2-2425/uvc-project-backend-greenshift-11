@@ -16,6 +16,14 @@
           "note": "note"
         }
       ]
+    },
+    {
+      "id": 2,
+      "user": "innit",
+      "email": "example@email",
+      "password": "$2b$10$18rHhrtXTFI.x.dCwElLVOVcxxBQWUlOV/rIDntfMJT6K2bPsbv7y",
+      "currency": 0,
+      "notes": []
     }
   ]
 }
