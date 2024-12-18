@@ -27,9 +27,9 @@
     },
     {
       "id": 2,
-      "user": "John",
-      "email": "Therealfrans@gmail.com",
-      "password": "$2b$10$S407kycnhwBqJtUrgZAmN.LtYi/Shzo3dL8gkfQVreviWpmYJsMae",
+      "user": "Joeri",
+      "email": "joeriharreman@zeelandnet.nl",
+      "password": "$2b$10$YUU3/G1dmL4k8PmN9L7dIOQ50tTYcw/xk.7vf2E5Z/6xFBFADBGEy",
       "currency": 0,
       "notes": []
     }

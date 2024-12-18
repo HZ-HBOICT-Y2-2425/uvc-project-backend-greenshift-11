@@ -150,3 +150,44 @@ export async function getNotes(req, res) {
       res.status(500).json({ message: 'Internal server error' });
     }
   }
+
+
+  export async function updateUser(req, res) {
+    try {
+      const { name, email, currentPassword, newPassword } = req.body;
+      const { user } = req.params;
+  
+      // Load database
+      const db = readDatabase();
+      const foundUser = db.users.find((u) => u.user === user);
+  
+      if (!foundUser) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Verify current password if provided
+      if (currentPassword) {
+        const isPasswordValid = await compare(currentPassword, foundUser.password);
+        if (!isPasswordValid) {
+          return res.status(401).json({ message: 'Current password is incorrect' });
+        }
+      }
+  
+      // Update fields
+      if (name) foundUser.user = name;
+      if (email) foundUser.email = email;
+      if (newPassword) {
+        const hashedPassword = await hash(newPassword, 10);
+        foundUser.password = hashedPassword;
+      }
+  
+      // Save updates to the database
+      writeDatabase(db);
+  
+      res.status(200).json({ message: 'User updated successfully', user: foundUser });
+    } catch (error) {
+      console.error('Error updating user:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  }
+  
