@@ -1,17 +1,26 @@
 // start.js setup from learnnode.com by Wes Bos
 import express from 'express';
 import * as dotenv from 'dotenv';
+import cors from 'cors'; // Import CORS middleware
+
 dotenv.config({ path: 'variables.env' });
+
 import indexRouter from './routes/index.js';
 import tasksRouter from './routes/tasks.js';
+import articlesRouter from './routes/articles.js';
 
 const app = express();
 
-// support json encoded and url-encoded bodies, mainly used for post and update
+// Enable CORS for all routes
+app.use(cors());
+
+// Support JSON encoded and URL-encoded bodies, mainly used for POST and update
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', tasksRouter);
 
+// Define routes
+app.use('/api', tasksRouter);
+app.use('/api', articlesRouter);
 app.use('/', indexRouter);
 
 app.set('port', process.env.PORT || 3011);

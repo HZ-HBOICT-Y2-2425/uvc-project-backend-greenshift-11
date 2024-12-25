@@ -27,11 +27,21 @@
     },
     {
       "id": 2,
-      "user": "John",
-      "email": "Therealfrans@gmail.com",
-      "password": "$2b$10$S407kycnhwBqJtUrgZAmN.LtYi/Shzo3dL8gkfQVreviWpmYJsMae",
+      "user": "onyosnitchin",
+      "email": "switches@gmail.com",
+      "password": "$2b$10$t8p6np0j.IW14UlG8qEXSOVmJ7SVw09m8TSjhgw75xW9R9YvjTXWa",
       "currency": 0,
-      "notes": []
+      "notes": [],
+      "categories": []
+    },
+    {
+      "id": 3,
+      "user": "woop",
+      "email": "aydotjohn@gmail.com",
+      "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
+      "currency": 0,
+      "notes": [],
+      "categories": []
     }
   ]
 }

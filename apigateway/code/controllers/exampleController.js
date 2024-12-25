@@ -3,6 +3,7 @@ import pkg from 'jsonwebtoken';
 const { sign } = pkg;
 import fs from 'fs';
 import path from 'path';
+import fetch from 'node-fetch';
 
 // Get the absolute path to the db.json file
 const dbPath = path.resolve('./db.json');
@@ -42,6 +43,7 @@ export async function addUser(req, res) {
         password: hashedPassword,
         currency: 0,
         notes: [],
+        categories: []
       };
   
       db.users.push(newUser);
@@ -150,3 +152,88 @@ export async function getNotes(req, res) {
       res.status(500).json({ message: 'Internal server error' });
     }
   }
+
+  export async function updateUserCategories(req, res) {
+    try {
+        const { user, categories } = req.body;
+
+        if (!user || !categories) {
+            return res.status(400).json({ message: 'User and categories are required' });
+        }
+
+        // Load the database
+        const db = readDatabase();
+        const foundUser = db.users.find((u) => u.user === user);
+
+        if (!foundUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Update categories
+        console.log("Before update:", foundUser.categories);
+        foundUser.categories = categories;
+        writeDatabase(db);
+        console.log("After update:", foundUser.categories);
+
+        res.status(200).json({ message: 'Categories updated successfully', categories: foundUser.categories });
+    } catch (error) {
+        console.error('Error updating categories:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+    
+}
+
+export async function updateUserTasks(req, res){
+  try {
+    const { user, tasks } = req.body;
+
+    if (!user || !tasks) {
+      return res.status(400).json({ message: "User and tasks are required." });
+    }
+
+    const db = readDatabase();
+    const foundUser = db.users.find((u) => u.user === user);
+
+    if (!foundUser) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    // Update tasks for the user
+    foundUser.tasks = tasks;
+    writeDatabase(db);
+
+    res.status(200).json({ message: "Tasks updated successfully", tasks });
+  } catch (error) {
+    console.error("Error updating user tasks:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export const getTasksByCategory = (req, res) => {
+  const { category } = req.params;
+  if (tasks[category]) {
+    res.status(200).json({ tasks: tasks[category] });
+  } else {
+    res.status(404).json({ error: "Category not found" });
+  }
+};
+
+export async function proxyUpdateTasksByCategory(req, res) {
+  const { category } = req.params;
+  const { tasks } = req.body;
+
+  try {
+    const response = await fetch(`http://localhost:3011/api/tasks/${category}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tasks }),
+    });
+
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error('Error proxying task update:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+

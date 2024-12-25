@@ -61,3 +61,31 @@ const tasks = {
     res.status(200).json({ categories: Object.keys(tasks) });
   };
   
+  export const updateTasksByCategory = (req, res) => {
+    const { category } = req.params; // Category from URL params
+    const { tasks: newTasks } = req.body; // Tasks array from request body
+  
+    console.log("Updating tasks for category:", category);
+    console.log("New tasks:", newTasks);
+  
+    // Validate input
+    if (!category || !newTasks || !Array.isArray(newTasks)) {
+      return res
+        .status(400)
+        .json({ message: "Category and tasks array are required." });
+    }
+  
+    // Check if the category exists
+    if (!tasks[category]) {
+      return res.status(404).json({ message: "Category not found." });
+    }
+  
+    // Append the new tasks to the existing tasks
+    tasks[category] = [...tasks[category], ...newTasks];
+  
+    console.log(`Tasks for category "${category}" updated successfully.`);
+    res.status(200).json({
+      message: `Tasks updated for category: ${category}`,
+      tasks: tasks[category],
+    });
+  };
