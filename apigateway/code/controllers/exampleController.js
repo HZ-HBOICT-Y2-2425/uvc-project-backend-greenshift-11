@@ -15,6 +15,15 @@ const writeDatabase = (data) => {
  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf-8');
 };
 
+export async function getItems(req, res) {
+  try {
+    const db = readDatabase();
+    res.status(200).json(db.items);
+  } catch (error) {
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
 export async function addUser(req, res) {
  try {
    const { name, email, password } = req.body;
