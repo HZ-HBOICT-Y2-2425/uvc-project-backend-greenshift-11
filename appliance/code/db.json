@@ -5,60 +5,11 @@
   },
   "appliances": [
     {
-      "id": 1, 
-      "brand": "Henry",
-      "type": "Cat",
-      "description": "bla bla bla",
-      "hoursPerWeek": 4
-    },
-    {
-      "id": 2, 
-      "brand": "Henry",
-      "type": "Cat",
-      "description": "bla bla bla",
-      "hoursPerWeek": 4
-    },
-    {
-      "id": 3, 
-      "brand": "Henry",
-      "type": "Cat",
-      "description": "bla bla bla",
-      "hoursPerWeek": 4
-    },
-    {
-      "id": 4, 
-      "brand": "Henry",
-      "type": "Cat",
-      "description": "bla bla bla",
-      "hoursPerWeek": 4
-    },
-    {
-      "id": 5, 
-      "brand": "Henry",
-      "type": "Cat",
-      "description": "bla bla bla",
-      "hoursPerWeek": 4
-    },
-    {
-      "id": 6, 
-      "brand": "Henry",
-      "type": "Cat",
-      "description": "bla bla bla",
-      "hoursPerWeek": 4
-    },
-    {
-      "id": 7, 
-      "brand": "Henry",
-      "type": "Cat",
-      "description": "bla bla bla",
-      "hoursPerWeek": 4
-    },
-    {
-      "id": 8, 
-      "brand": "Henry",
-      "type": "Cat",
-      "description": "bla bla bla",
-      "hoursPerWeek": 4
+      "id": 0, 
+      "brand": "Input a brand here",
+      "type": "Input a type here",
+      "description": "Input",
+      "hoursPerWeek": 0
     }
   ]
 }
