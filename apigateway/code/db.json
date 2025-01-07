@@ -37,6 +37,14 @@
       "password": "$2b$10$Ryor97EjTptOndMI/AucRO0FX6VSup/OlDLWaxxF6vUMfF7cEGntW",
       "currency": 0,
       "notes": []
+    },
+    {
+      "id": 2,
+      "user": "innit",
+      "email": "example@email",
+      "password": "$2b$10$18rHhrtXTFI.x.dCwElLVOVcxxBQWUlOV/rIDntfMJT6K2bPsbv7y",
+      "currency": 0,
+      "notes": []
     }
   ]
 }
