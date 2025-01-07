@@ -42,6 +42,15 @@
       "currency": 0,
       "notes": [],
       "categories": []
+    },
+    {
+      "id": 4,
+      "user": "Joeri2007",
+      "email": "Joeri@harreman.nl",
+      "password": "$2b$10$XMlvGTethiEc5fxvk9jf4Ohub9XRksiyk..ep8bjVT2vQXAhgkjAe",
+      "currency": 0,
+      "notes": [],
+      "categories": []
     }
   ]
 }
