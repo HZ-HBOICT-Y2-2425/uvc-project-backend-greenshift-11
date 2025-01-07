@@ -43,7 +43,7 @@
       "user": "innit",
       "email": "example@email",
       "password": "$2b$10$18rHhrtXTFI.x.dCwElLVOVcxxBQWUlOV/rIDntfMJT6K2bPsbv7y",
-      "currency": 0,
+      "currency": 200,
       "notes": []
     }
   ]
