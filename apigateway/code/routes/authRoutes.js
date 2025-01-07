@@ -8,7 +8,8 @@ import {
   getNotes,
   getInventory,  // Add these
   purchaseItem,  // new 
-  getCurrency    // imports
+  getCurrency,    // imports
+  getItems  // new
 } from '../controllers/exampleController.js';
 
 const router = express.Router();
@@ -21,6 +22,7 @@ router.get('/notes/:user', getNotes);
 router.get('/currency/:user', authenticateToken, getCurrency);
 router.get('/inventory/:user', authenticateToken, getInventory);
 router.post('/purchase', authenticateToken, purchaseItem);
+router.get('/items', getItems);
 
 
 router.get('/protected', authenticateToken, (req, res) => {
