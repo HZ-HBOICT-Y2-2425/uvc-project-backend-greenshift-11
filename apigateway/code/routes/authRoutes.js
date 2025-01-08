@@ -1,6 +1,16 @@
 import express from 'express';
 import { authenticateToken } from '../middleware/exampleMiddleware.js';
-import { addUser, loginUser, getUsers, addNote, getNotes, updateUserCategories, proxyUpdateTasksByCategory,} from '../controllers/exampleController.js';
+import { 
+  addUser, 
+  loginUser, 
+  getUsers, 
+  addNote, 
+  getNotes,
+  getInventory,  // Add these
+  purchaseItem,  // new 
+  getCurrency,    // imports
+  getItems  // new
+ updateUserCategories, proxyUpdateTasksByCategory,} from '../controllers/exampleController.js';
 
 const router = express.Router();
 
@@ -9,6 +19,11 @@ router.post('/login', loginUser);
 router.get('/users', getUsers);
 router.post('/notes', addNote);
 router.get('/notes/:user', getNotes);
+router.get('/currency/:user', authenticateToken, getCurrency);
+router.get('/inventory/:user', authenticateToken, getInventory);
+router.post('/purchase', authenticateToken, purchaseItem);
+router.get('/items', getItems);
+
 router.put("/users/categories", updateUserCategories);
 router.put('/tasks/:category', proxyUpdateTasksByCategory);
 
@@ -23,4 +38,3 @@ router.post("/validate-token", authenticateToken, (req, res) => {
   });
 
 export default router;
-
