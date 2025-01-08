@@ -1,15 +1,75 @@
 {
   "meta": {
-    "tile": "List of appliances",
+    "title": "List of appliances",
     "date": "December 2024"
   },
   "appliances": [
     {
-      "id": 0, 
-      "brand": "Input a brand here",
-      "type": "Input a type here",
-      "description": "Input",
-      "hoursPerWeek": 0
+      "id": 0,
+      "brand": "Samsung",
+      "type": "Refrigerator",
+      "description": "A double-door fridge with a water dispenser and energy-efficient technology.",
+      "hoursPerWeek": 168
+    },
+    {
+      "id": 1,
+      "brand": "Dyson",
+      "type": "Vacuum Cleaner",
+      "description": "A powerful cordless vacuum cleaner with HEPA filtration.",
+      "hoursPerWeek": 5
+    },
+    {
+      "id": 2,
+      "brand": "Sony",
+      "type": "Television",
+      "description": "A 55-inch 4K Ultra HD Smart TV with HDR support.",
+      "hoursPerWeek": 40
+    },
+    {
+      "id": 3,
+      "brand": "Philips",
+      "type": "Air Purifier",
+      "description": "An air purifier with a HEPA filter and quiet operation mode.",
+      "hoursPerWeek": 50
+    },
+    {
+      "id": 4,
+      "brand": "Whirlpool",
+      "type": "Washing Machine",
+      "description": "A front-load washing machine with multiple wash programs.",
+      "hoursPerWeek": 14
+    }
+  ],
+  "rooms": [
+    {
+      "id": 0,
+      "name": "Living Room",
+      "icon": "https://example.com/icons/living_room.png",
+      "appliances": [2, 3]
+    },
+    {
+      "id": 1,
+      "name": "Kitchen",
+      "icon": "https://example.com/icons/kitchen.png",
+      "appliances": [0]
+    },
+    {
+      "id": 2,
+      "name": "Laundry Room",
+      "icon": "https://example.com/icons/laundry_room.png",
+      "appliances": [4]
+    },
+    {
+      "id": 3,
+      "name": "Bedroom",
+      "icon": "https://example.com/icons/bedroom.png",
+      "appliances": []
+    },
+    {
+      "id": 4,
+      "name": "Storage",
+      "icon": "https://example.com/icons/storage.png",
+      "appliances": [1]
     }
   ]
 }

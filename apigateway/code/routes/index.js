@@ -13,7 +13,6 @@ const applianceProxy = createProxyMiddleware({
   changeOrigin: true
 });
 
-
 router.use('/microservice', cors(), microserviceProxy);
 router.use('/appliance', cors(), applianceProxy);
 
