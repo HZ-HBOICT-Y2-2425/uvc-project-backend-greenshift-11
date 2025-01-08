@@ -169,18 +169,6 @@
       "user": "innit",
       "email": "example@email",
       "password": "$2b$10$18rHhrtXTFI.x.dCwElLVOVcxxBQWUlOV/rIDntfMJT6K2bPsbv7y",
-<<<<<<< HEAD
-      "currency": 0,
-      "notes": []
-    },
-    {
-      "id": 5,
-      "user": "zmyslek",
-      "email": "zuzia.myslek@gmail.com",
-      "password": "$2b$10$ET8JuAO8Mkuu6au/hHq2r.XcxlIEirhCym.T.NLTVkSEDciXaSv7O",
-      "currency": 0,
-      "notes": []
-=======
       "currency": 114,
       "notes": [],
       "inventory": [
@@ -205,7 +193,15 @@
           "quantity": 1
         }
       ]
->>>>>>> 964999fb995849ecbc1f831e0f16e61d6a05e9f8
+    },
+    {
+      "id": 5,
+      "user": "zmyslek",
+      "email": "zuzia.myslek@gmail.com",
+      "password": "$2b$10$XrWFF9ws2TGbTFerVBZk8eLxc9OBkzn.62.Qi3.k90pZdb0EGx.ze",
+      "currency": 500,
+      "inventory": [],
+      "notes": []
     }
   ]
 }
