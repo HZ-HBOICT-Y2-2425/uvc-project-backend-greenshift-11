@@ -9,61 +9,71 @@
         "id": 1,
         "name": "Cow",
         "emoji": "🐄",
-        "price": 10
+        "price": 10,
+        "description": "A philosophical milk-maker who believes grass is life's greatest delicacy and thinks moo-sic is the best form of communication"
       },
       {
         "id": 2,
         "name": "Sheep",
         "emoji": "🐑",
-        "price": 15
+        "price": 15,
+        "description": "Nature's walking sweater who dreams of becoming a cloud when it grows up - currently moonlighting as an eco-friendly lawnmower"
       },
       {
         "id": 3,
         "name": "Pig",
         "emoji": "🐖",
-        "price": 20
+        "price": 20,
+        "description": "A gourmet mud spa enthusiast with a master's degree in truffle hunting and a PhD in afternoon naps"
       },
       {
         "id": 4,
         "name": "Chicken",
         "emoji": "🐔",
-        "price": 25
+        "price": 25,
+        "description": "An aspiring alarm clock who thinks sunrise is fashionably late and believes every worm is an early bird special"
       },
       {
         "id": 5,
         "name": "Horse",
         "emoji": "🐎",
-        "price": 30
+        "price": 30,
+        "description": "A majestic hair model who treats every field like a runway and thinks carrots are nature's energy drinks"
       },
       {
         "id": 6,
         "name": "Dog",
         "emoji": "🐕",
-        "price": 35
+        "price": 35,
+        "description": "Professional tail-wagging enthusiast and certified expert in turning any human into a personal treat dispenser"
       },
       {
         "id": 7,
         "name": "Cat",
         "emoji": "🐈",
-        "price": 40
+        "price": 40,
+        "description": "Self-proclaimed ruler of all they survey, part-time nap consultant, and professional box inspector"
       },
       {
         "id": 8,
         "name": "Rabbit",
         "emoji": "🐇",
-        "price": 45
+        "price": 45,
+        "description": "Speed-hopping vegetable critic who thinks carrots are overrated and believes every garden is a salad bar"
       },
       {
         "id": 9,
         "name": "Duck",
         "emoji": "🦆",
-        "price": 50
+        "price": 50,
+        "description": "Aquatic fashion icon who believes bread is overrated and thinks puddles are five-star resorts"
       },
       {
         "id": 10,
         "name": "Goat",
         "emoji": "🐐",
-        "price": 55
+        "price": 55,
+        "description": "Aspiring parkour artist and recycling enthusiast who believes everything is potentially delicious"
       }
     ],
     "plants": [
@@ -71,61 +81,71 @@
         "id": 1,
         "name": "Mushroom",
         "emoji": "🍄",
-        "price": 5
+        "price": 5,
+        "description": "The fun guy of the garden who throws the best decomposition parties and makes everything around them grow. Works the night shift as a soil improvement specialist."
       },
       {
         "id": 2,
         "name": "Sunflower",
         "emoji": "🌻",
-        "price": 8
+        "price": 8,
+        "description": "The eternal optimist who can't help but look on the bright side. Has a side gig as a solar panel and thinks every day is a good hair day."
       },
       {
         "id": 3,
         "name": "Cactus",
         "emoji": "🌵",
-        "price": 12
+        "price": 12,
+        "description": "Desert survivalist with a prickly exterior but a heart of gold. Believes water is overrated and personal space is underrated."
       },
       {
         "id": 4,
         "name": "Palm Tree",
         "emoji": "🌴",
-        "price": 18
+        "price": 18,
+        "description": "Laid-back beach enthusiast who's mastered the art of swaying in the breeze. Professional umbrella and vacation vibes provider."
       },
       {
         "id": 5,
         "name": "Bamboo",
         "emoji": "🎍",
-        "price": 25
+        "price": 25,
+        "description": "Overachieving growth enthusiast who believes in reaching new heights daily. Favorite motto: 'Sky's the limit, but why stop there?'"
       },
       {
         "id": 6,
         "name": "Rose",
         "emoji": "🌹",
-        "price": 30
+        "price": 30,
+        "description": "Romantic soul with a flair for drama. Part-time poet, full-time beauty queen, and firm believer that every thorn has its purpose."
       },
       {
         "id": 7,
         "name": "Lavender",
         "emoji": "🌿",
-        "price": 35
+        "price": 35,
+        "description": "Certified aromatherapist and meditation guru. Makes everyone around them feel calmer just by existing. Professional stress reliever."
       },
       {
         "id": 8,
         "name": "Tulip",
         "emoji": "🌷",
-        "price": 40
+        "price": 40,
+        "description": "Spring fashion icon who loves starting trends. Believes in the power of power naps and always wakes up looking fabulous."
       },
       {
         "id": 9,
         "name": "Orchid",
         "emoji": "🌺",
-        "price": 45
+        "price": 45,
+        "description": "High-maintenance diva with expensive taste. Requires perfect conditions but claims it's worth it. Spoiler alert: they're right."
       },
       {
         "id": 10,
         "name": "Bonsai",
         "emoji": "🌳",
-        "price": 50
+        "price": 50,
+        "description": "Zen master who's mastered the art of growing old gracefully. Believes size doesn't matter and patience is more than a virtue."
       }
     ]
   },
@@ -169,7 +189,7 @@
       "user": "innit",
       "email": "example@email",
       "password": "$2b$10$18rHhrtXTFI.x.dCwElLVOVcxxBQWUlOV/rIDntfMJT6K2bPsbv7y",
-      "currency": 114,
+      "currency": 5,
       "notes": [],
       "inventory": [
         {
@@ -180,7 +200,7 @@
         {
           "itemId": 1,
           "type": "plant",
-          "quantity": 1
+          "quantity": 5
         },
         {
           "itemId": 2,
@@ -191,8 +211,78 @@
           "itemId": 2,
           "type": "animal",
           "quantity": 1
+        },
+        {
+          "itemId": 4,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 1,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 8,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 3,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 7,
+          "type": "animal",
+          "quantity": 5
+        },
+        {
+          "itemId": 9,
+          "type": "plant",
+          "quantity": 5
+        },
+        {
+          "itemId": 8,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 7,
+          "type": "plant",
+          "quantity": 5
+        },
+        {
+          "itemId": 6,
+          "type": "animal",
+          "quantity": 5
+        },
+        {
+          "itemId": 3,
+          "type": "animal",
+          "quantity": 4
         }
       ]
+    },
+    {
+      "id": 5,
+      "user": "innit2",
+      "email": "example@email",
+      "password": "$2b$10$AolP6Fe3GI/gKRhaqjJSO.1VhGisemFrhb6LbrOvT.HV2bGtumBEy",
+      "currency": 376,
+      "inventory": [
+        {
+          "itemId": 2,
+          "type": "plant",
+          "quantity": 3
+        },
+        {
+          "itemId": 4,
+          "type": "animal",
+          "quantity": 4
+        }
+      ],
+      "notes": []
     }
   ]
 }
