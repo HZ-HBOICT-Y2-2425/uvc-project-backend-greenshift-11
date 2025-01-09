@@ -10,7 +10,7 @@ import {
   purchaseItem,  // new 
   getCurrency,    // imports
   getItems,  // new
- updateUserCategories, proxyUpdateTasksByCategory,} from '../controllers/exampleController.js';
+ getUserDetails} from '../controllers/exampleController.js';
 
 const router = express.Router();
 
@@ -23,9 +23,8 @@ router.get('/currency/:user', authenticateToken, getCurrency);
 router.get('/inventory/:user', authenticateToken, getInventory);
 router.post('/purchase', authenticateToken, purchaseItem);
 router.get('/items', getItems);
-
-router.put("/users/categories", updateUserCategories);
-router.put('/tasks/:category', proxyUpdateTasksByCategory);
+ 
+router.get('/users/:identifier', getUserDetails);
 
 
 router.get('/protected', authenticateToken, (req, res) => {

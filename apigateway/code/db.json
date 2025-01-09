@@ -201,6 +201,15 @@
           "quantity": 1
         }
       ]
+    },
+    {
+      "id": 5,
+      "user": "ife",
+      "email": "there@gmail.com",
+      "password": "$2b$10$MIQckMvlhFpNcw.xxwcjFeeWQvzzwsTI0khjCdA9Oy03WX0Jw1tcS",
+      "currency": 500,
+      "inventory": [],
+      "notes": []
     }
   ]
 }
