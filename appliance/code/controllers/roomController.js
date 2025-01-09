@@ -13,9 +13,10 @@ const rooms = db.data.rooms;
 
 export async function getAllRooms(req, res) {
   const roomUrls = rooms.map(room => `/co2/${room.id}`);
-  res.status(200).send(roomUrls);
+  res.status(200).json(roomUrls); // Use JSON for consistency
 }
 
+// Update a room by ID
 export async function updateRoom(req, res) {
   let id = Number(req.params.id);
   let roomIndex = rooms.findIndex(room => room.id === id);
@@ -41,8 +42,11 @@ export async function getRoomById(req, res) {
   } else {
     res.status(404).json({ message: 'Room not found' });
   }
+
+  res.status(200).json(room);
 }
 
+// Create a new room
 export async function createRoom(req, res) {
   let id = 1;
   while (rooms.find(room => room.id === id)) {
@@ -58,6 +62,7 @@ export async function createRoom(req, res) {
   res.status(201).json({ message: "Room created successfully" });
 }
 
+// Delete rooms by ID range
 export async function deleteRoomsByIDs(req, res) {
   let startID = Number(req.params.start);
   let endID = Number(req.params.end);
@@ -82,5 +87,5 @@ export async function getRoomNames(req, res) {
   const icons = rooms.map(room => room.icon);
   const names = rooms.map(room => room.name);
 
-  res.json({ ids, icons, names });
+  res.status(200).json({ ids, icons, names });
 }
