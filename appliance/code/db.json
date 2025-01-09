@@ -66,6 +66,13 @@
       "type": "Dishwasher",
       "description": "A quiet, energy-efficient dishwasher with multiple wash cycles.",
       "hoursPerWeek": 15
+    },
+    {
+      "id": 9,
+      "brand": "abs",
+      "type": "Washing Machine",
+      "description": "qqq",
+      "hoursPerWeek": "111"
     }
   ],
   "rooms": [

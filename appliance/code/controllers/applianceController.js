@@ -22,7 +22,6 @@ export async function updateAppliance(req, res) {
     appliance = { id: id, brand: brand, type: type, description: description, hoursPerWeek: hoursPerWeek };  
     // todo remove log
     console.log(appliance);
-    appliances.push(appliance);
     await db.write();
     res.status(201).send(`I updated this appliance: ${JSON.stringify(appliance)}?`);
   } else {
