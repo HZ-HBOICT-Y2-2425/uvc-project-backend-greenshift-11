@@ -215,6 +215,16 @@
       "currency": 500,
       "inventory": [],
       "notes": []
+    },
+    {
+      "id": 4,
+      "user": "innit",
+      "email": "sjdhfg@example",
+      "password": "$2b$10$BjfZK9QW3W0/WoYb4h8U6.VyK52Yre9V46t.sLdoai3qbrF7IOxJi",
+      "currency": 500,
+      "inventory": [],
+      "notes": [],
+      "completedTasks": []
     }
   ]
 }
