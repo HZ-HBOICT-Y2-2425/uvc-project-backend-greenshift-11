@@ -44,21 +44,35 @@
       "brand": "Yes",
       "type": "Dryer",
       "description": "zzzzz",
-      "hoursPerWeek": "111"
+      "hoursPerWeek": 111
     },
     {
       "id": 6,
       "brand": "Samsung",
       "type": "Rice Cooker",
-      "description": "a",
-      "hoursPerWeek": "7"
+      "description": "A compact rice cooker with multiple cooking settings.",
+      "hoursPerWeek": 7
+    },
+    {
+      "id": 7,
+      "brand": "LG",
+      "type": "Microwave",
+      "description": "A convection microwave oven with sensor cooking.",
+      "hoursPerWeek": 10
+    },
+    {
+      "id": 8,
+      "brand": "GE",
+      "type": "Dishwasher",
+      "description": "A quiet, energy-efficient dishwasher with multiple wash cycles.",
+      "hoursPerWeek": 15
     }
   ],
   "rooms": [
     {
       "id": 0,
       "name": "Living Room",
-      "icon": "https://example.com/icons/living_room.png",
+      "icon": "🛋️",
       "appliances": [
         2,
         3
@@ -67,29 +81,32 @@
     {
       "id": 1,
       "name": "Kitchen",
-      "icon": "https://example.com/icons/kitchen.png",
+      "icon": "🍽️",
       "appliances": [
-        0
+        0,
+        7,
+        8
       ]
     },
     {
       "id": 2,
       "name": "Laundry Room",
-      "icon": "https://example.com/icons/laundry_room.png",
+      "icon": "🧺",
       "appliances": [
-        4
+        4,
+        5
       ]
     },
     {
       "id": 3,
       "name": "Bedroom",
-      "icon": "https://example.com/icons/bedroom.png",
+      "icon": "🛏️",
       "appliances": []
     },
     {
       "id": 4,
       "name": "Storage",
-      "icon": "https://example.com/icons/storage.png",
+      "icon": "📦",
       "appliances": [
         1
       ]
