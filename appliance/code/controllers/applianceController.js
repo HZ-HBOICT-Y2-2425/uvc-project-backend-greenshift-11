@@ -12,22 +12,24 @@ export async function getAllAppliances(req, res) {
 }
 
 export async function updateAppliance(req, res) {
-  let id = Number(req.params.id);
-  let appliance = appliances.find(appliance => appliance.id === id);
-  if (appliance) {
-    let brand = req.query.brand;
-    let type = req.query.type;
-    let description = req.query.description;
-    let hoursPerWeek = req.query.hoursPerWeek;
-    appliance = { id: id, brand: brand, type: type, description: description, hoursPerWeek: hoursPerWeek };  
-    // todo remove log
-    console.log(appliance);
-    appliances.push(appliance);
-    await db.write();
-    res.status(201).send(`I updated this appliance: ${JSON.stringify(appliance)}?`);
-  } else {
-    res.status(404).send(`The appliance with id ${id} doesn't exist`);
+  const id = Number(req.params.id);
+  const applianceIndex = appliances.findIndex(appliance => appliance.id === id);
+
+  if (applianceIndex === -1) {
+    return res.status(404).json({ message: "Appliance not found" });
   }
+
+  const { brand, type, description, hoursPerWeek } = req.body;
+
+  if (!brand || !type || !description || !hoursPerWeek) {
+    return res.status(400).json({ message: "Missing required fields" });
+  }
+
+  appliances[applianceIndex] = { id, brand, type, description, hoursPerWeek };
+  console.log(appliances[applianceIndex]);
+
+  await db.write();
+  res.status(200).json({ message: "Appliance updated successfully", appliance: appliances[applianceIndex] });
 }
 
 export async function getApplianceById(req, res) {
@@ -43,20 +45,31 @@ export async function getApplianceById(req, res) {
 }
 
 export async function createAppliance(req, res) {
-  let id = 1;
-  while (appliances.find(appliance => appliance.id === id)) {
-    id++;
+  try {
+    let id = 1;
+    while (appliances.find(appliance => appliance.id === id)) {
+      id++;
+    }
+
+    const { brand, type, description, hoursPerWeek } = req.body;
+
+    // Validate input data
+    if (!brand || !type || !description || !hoursPerWeek) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    // Create new appliance
+    const appliance = { id, brand, type, description, hoursPerWeek };
+    console.log("Creating appliance:", appliance);
+
+    appliances.push(appliance);
+    await db.write(); // Save to database
+
+    res.status(201).json({ message: "Appliance created successfully", appliance });
+  } catch (error) {
+    console.error("Error creating appliance:", error);
+    res.status(500).json({ message: "Failed to create appliance" });
   }
-  let brand = req.query.brand;
-  let type = req.query.type;
-  let description = req.query.description;
-  let hoursPerWeek = req.query.hoursPerWeek;
-  let appliance = { id: id, brand: brand, type: type, description: description, hoursPerWeek: hoursPerWeek };  
-  // todo remove log
-  console.log(appliance);
-  appliances.push(appliance);
-  await db.write();
-  res.status(201).json({ message: "Appliance created successfully" });
 }
 
 export async function deleteAppliancesByIDs(req, res) {

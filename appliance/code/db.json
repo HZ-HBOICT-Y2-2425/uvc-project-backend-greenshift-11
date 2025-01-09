@@ -66,6 +66,27 @@
       "type": "Dishwasher",
       "description": "A quiet, energy-efficient dishwasher with multiple wash cycles.",
       "hoursPerWeek": 15
+    },
+    {
+      "id": 9,
+      "brand": "Test Brand",
+      "type": "Refrigerator",
+      "description": "Test description",
+      "hoursPerWeek": 5
+    },
+    {
+      "id": 10,
+      "brand": "OLG",
+      "type": "Washing Machine",
+      "description": "A small fridge",
+      "hoursPerWeek": 6
+    },
+    {
+      "id": 11,
+      "brand": "OLG",
+      "type": "Electric Grill",
+      "description": "A small fridge",
+      "hoursPerWeek": 50
     }
   ],
   "rooms": [

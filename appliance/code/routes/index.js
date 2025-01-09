@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllAppliances, getApplianceById, createAppliance, updateAppliance, deleteAppliancesByIDs, getApplianceUsage, getNames } from '../controllers/applianceController.js';
+import { getAllAppliances, getApplianceById, createAppliance, updateAppliance, deleteAppliancesByIDs, getNames, getApplianceUsage } from '../controllers/applianceController.js';
 import { getAllRooms, getRoomById, createRoom, updateRoom, deleteRoomsByIDs, getRoomNames } from '../controllers/roomController.js';
 import { checkName } from '../middleware/exampleMiddleware.js';
 const router = express.Router();
@@ -9,11 +9,12 @@ router.get('/', (req, res, next) => {
 });
 router.get('/appliance', checkName, getAllAppliances);
 router.get('/appliance/:id', checkName, getApplianceById);
-router.post('/appliance', checkName, createAppliance);
+router.post('/appliance', checkName, createAppliance); 
 router.put('/appliance/:id', checkName, updateAppliance);
 router.delete('/appliance/:id', checkName, deleteAppliancesByIDs);
-router.get('/api/appliance-usage', checkName, getApplianceUsage);
-router.get('/api/appliance-names', checkName, getNames);
+router.get('/appliance/api/appliance-usage', checkName, getApplianceUsage);
+router.get('/appliance/api/appliance-names', checkName, getNames);
+router.get('/appliance/api/room-names', checkName, getRoomNames);
 
 router.get('/room', checkName, getAllRooms);
 router.get('/room/:id', checkName, getRoomById);
