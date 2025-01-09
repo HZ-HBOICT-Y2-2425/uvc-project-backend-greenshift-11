@@ -3,7 +3,7 @@ import { JSONFilePreset } from "lowdb/node";
 // Read or create db.json
 // defaultData specifies the structure of the database
 const defaultData = { meta: {"tile": "List of appliances","date": "December 2024"}, appliances : [] }
-const db = await JSONFilePreset('db.json', defaultData)
+const db = await JSONFilePreset('./db.json', defaultData)
 const appliances = db.data.appliances
 
 export async function getAllAppliances(req, res) {
@@ -31,9 +31,8 @@ export async function updateAppliance(req, res) {
 }
 
 export async function getApplianceById(req, res) {
-  const db = readDatabase();
-  console.log('Database contents:', db.appliances); // Log all appliances
-  const appliance = db.appliances.find(a => a.id === parseInt(req.params.id));
+  console.log('Database contents:', appliances); // Log all appliances
+  const appliance = appliances.find(a => a.id === parseInt(req.params.id));
   console.log(`Looking for appliance with id: ${req.params.id}, found:`, appliance);
 
   if (appliance) {
@@ -85,12 +84,8 @@ export async function deleteAppliancesByIDs(req, res) {
   }
 }
 
-//used only for displaying the appliances
+//used only for displaying the names
 export async function getNames(req, res) {
-  const db = readDatabase();
-  console.log('Appliances:', db.appliances); // Log appliances
-  const appliances = db.appliances;
-
   const ids = appliances.map(appliance => appliance.id);
   const brands = appliances.map(appliance => appliance.brand);
   const types = appliances.map(appliance => appliance.type);
@@ -100,9 +95,7 @@ export async function getNames(req, res) {
 
 //used purely for the graph
 export async function getApplianceUsage(req, res) {
-  const db = readDatabase();
-  const appliances = db.appliances;
-
+  console.log('Appliances:', appliances); // Log appliances
   const series = appliances.map(appliance => appliance.hoursPerWeek);
   const categories = appliances.map(appliance => appliance.brand);
   const labels = appliances.map(appliance => appliance.type);

@@ -30,9 +30,8 @@ export async function updateRoom(req, res) {
 }
 
 export async function getRoomById(req, res) {
-  const db = readDatabase();
-  console.log('Database contents:', db.rooms); // Log all rooms
-  const room = db.rooms.find(a => a.id === parseInt(req.params.id));
+  console.log('Database contents:', rooms); // Log all rooms
+  const room = rooms.find(a => a.id === parseInt(req.params.id));
   console.log(`Looking for room with id: ${req.params.id}, found:`, room);
 
   if (room) {
@@ -82,10 +81,7 @@ export async function deleteRoomsByIDs(req, res) {
 }
 
 export async function getRoomNames(req, res) {
-  const db = readDatabase();
-  console.log('Rooms:', db.rooms); // Log rooms
-  const rooms = db.rooms;
-
+  console.log('Rooms:', rooms); // Log rooms
   const ids = rooms.map(room => room.id);
   const icons = rooms.map(room => room.icon);
   const names = rooms.map(room => room.name);
