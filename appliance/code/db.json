@@ -9,70 +9,88 @@
       "brand": "Samsung",
       "type": "Refrigerator",
       "description": "A double-door fridge with a water dispenser and energy-efficient technology.",
-      "hoursPerWeek": 168
+      "hoursPerWeek": 168,
+      "emoji": "❄️"
     },
     {
       "id": 1,
       "brand": "Dyson",
       "type": "Vacuum Cleaner",
       "description": "A powerful cordless vacuum cleaner with HEPA filtration.",
-      "hoursPerWeek": 5
+      "hoursPerWeek": 5,
+      "emoji": "🧹"
     },
     {
       "id": 2,
       "brand": "Sony",
       "type": "Television",
       "description": "A 55-inch 4K Ultra HD Smart TV with HDR support.",
-      "hoursPerWeek": 40
+      "hoursPerWeek": 40,
+      "emoji": "📺"
     },
     {
       "id": 3,
       "brand": "Philips",
       "type": "Air Purifier",
       "description": "An air purifier with a HEPA filter and quiet operation mode.",
-      "hoursPerWeek": 50
+      "hoursPerWeek": 50,
+      "emoji": "💨" 
     },
     {
       "id": 4,
       "brand": "Whirlpool",
       "type": "Washing Machine",
       "description": "A front-load washing machine with multiple wash programs.",
-      "hoursPerWeek": 14
+      "hoursPerWeek": 14,
+      "emoji": "🧺"
     },
     {
       "id": 5,
       "brand": "Yes",
       "type": "Dryer",
       "description": "zzzzz",
-      "hoursPerWeek": 111
+      "hoursPerWeek": 111,
+      "emoji": "🧺"
     },
     {
       "id": 6,
       "brand": "Samsung",
       "type": "Rice Cooker",
       "description": "A compact rice cooker with multiple cooking settings.",
-      "hoursPerWeek": 7
+      "hoursPerWeek": 7,
+      "emoji": "🍚"
     },
     {
       "id": 7,
       "brand": "LG",
       "type": "Microwave",
       "description": "A convection microwave oven with sensor cooking.",
-      "hoursPerWeek": 10
+      "hoursPerWeek": 10,
+      "emoji": "📡"
     },
     {
       "id": 8,
       "brand": "GE",
       "type": "Dishwasher",
       "description": "A quiet, energy-efficient dishwasher with multiple wash cycles.",
-      "hoursPerWeek": 15
+      "hoursPerWeek": 15,
+      "emoji": "🍽️"
     },
     {
       "id": 9,
       "brand": "abs",
       "type": "Washing Machine",
       "description": "qqq",
-      "hoursPerWeek": "111"
+      "hoursPerWeek": "111",
+      "emoji": "🧺"
+    },
+    {
+      "id": 10,
+      "brand": "SuzieBrand",
+      "type": "Washing Machine",
+      "description": "aaa",
+      "hoursPerWeek": "222",
+      "emoji": "🧺"
     }
   ],
   "rooms": [
