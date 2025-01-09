@@ -9,8 +9,11 @@ import {
   getInventory,  // Add these
   purchaseItem,  // new 
   getCurrency,    // imports
-  getItems  // new
- updateUserCategories, proxyUpdateTasksByCategory, getUserDetails, updateUser, } from '../controllers/exampleController.js';
+  getItems,  // new
+  updateUserCategories,
+   proxyUpdateTasksByCategory,
+    getUserDetails,
+     updateUser, } from '../controllers/exampleController.js';
 
 const router = express.Router();
 
