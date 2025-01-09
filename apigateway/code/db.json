@@ -44,7 +44,24 @@
       "email": "aydotjohn@gmail.com",
       "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
       "currency": 0,
-      "notes": [],
+      "notes": [
+        {
+          "date": "2025-01-08",
+          "note": "notes 1"
+        },
+        {
+          "date": "2024-12-31",
+          "note": "note 2 "
+        },
+        {
+          "date": "2025-01-01",
+          "note": "note"
+        },
+        {
+          "date": "2025-01-01",
+          "note": "note"
+        }
+      ],
       "completedTasks": [
         "Encourage a power-off habit for all appliances before bedtime.",
         "Turn off your TV and monitor when not in use.",
