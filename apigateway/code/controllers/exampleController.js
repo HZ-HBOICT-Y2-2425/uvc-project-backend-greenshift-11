@@ -50,6 +50,7 @@ export async function addUser(req, res) {
      currency: 500, // Starting currency
      inventory: [], // Initialize inventory
      notes: [],
+     completedTasks: [],
    };
 
    db.users.push(newUser);
@@ -322,25 +323,39 @@ export async function updateUser(req, res) {
 export async function updateCompletedTasks(req, res) {
   try {
     const { user, task, action } = req.body;
+    console.log("Request received:", { user, task, action });
+
+    // Validation
+    if (!user || !task || !action) {
+      console.error("Validation failed:", { user, task, action });
+      return res.status(400).json({ message: "User, task, and action are required." });
+    }
 
     const db = readDatabase();
     const foundUser = db.users.find((u) => u.user === user);
-
     if (!foundUser) {
+      console.error("User not found:", user);
       return res.status(404).json({ message: "User not found." });
     }
 
+    // Update tasks
     if (action === "complete") {
       if (!foundUser.completedTasks.includes(task)) {
         foundUser.completedTasks.push(task);
       }
     } else if (action === "uncomplete") {
       foundUser.completedTasks = foundUser.completedTasks.filter((t) => t !== task);
+    } else {
+      console.error("Invalid action:", action);
+      return res.status(400).json({ message: "Invalid action." });
     }
 
     writeDatabase(db);
+    console.log("Completed tasks updated successfully for user:", user);
 
-    res.status(200).json({ completedTasks: foundUser.completedTasks });
+    res.status(200).json({
+      completedTasks: foundUser.completedTasks,
+    });
   } catch (error) {
     console.error("Error updating completed tasks:", error);
     res.status(500).json({ message: "Internal server error" });

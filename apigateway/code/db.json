@@ -290,6 +290,21 @@
           "quantity": 1
         }
       ]
+    },
+    {
+      "id": 11,
+      "user": "newuser",
+      "email": "neweremail@gmail.com",
+      "password": "$2b$10$qxfDQzD/5wIU8MTrQLbqZuL.N80gT4krRqUsKutcfB30DyLjmLOkG",
+      "currency": 500,
+      "inventory": [],
+      "notes": [],
+      "completedTasks": [
+        "Monitor energy usage using apps like smart energy monitors.",
+        "Monitor fridge temperature and ensure it is between 3°C and 5°C to save energy.",
+        "Schedule a 'no appliance hour' every evening to reduce overall energy consumption.",
+        "Unplug the washing machine and dryer when not in use."
+      ]
     }
   ]
 }
