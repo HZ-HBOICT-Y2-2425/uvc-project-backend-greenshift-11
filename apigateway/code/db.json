@@ -159,6 +159,16 @@
         "Turn off your TV and monitor when not in use.",
         "Defrost your freezer if ice build-up is more than 1/4 inch thick to improve efficiency."
       ]
+    },
+    {
+      "id": 2,
+      "user": "Joeri",
+      "email": "Joeri@harreman.nl",
+      "password": "$2b$10$3Gd0jqkoXqISolj4v.IgIOmM7CbTmnERA4ISoCS50FlYytEiN2mVe",
+      "currency": 500,
+      "inventory": [],
+      "notes": [],
+      "completedTasks": []
     }
   ]
 }
