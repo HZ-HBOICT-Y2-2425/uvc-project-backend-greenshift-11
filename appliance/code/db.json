@@ -34,7 +34,7 @@
       "type": "Air Purifier",
       "description": "An air purifier with a HEPA filter and quiet operation mode.",
       "hoursPerWeek": 50,
-      "emoji": "💨" 
+      "emoji": "💨"
     },
     {
       "id": 4,
@@ -91,6 +91,13 @@
       "description": "aaa",
       "hoursPerWeek": "222",
       "emoji": "🧺"
+    },
+    {
+      "id": 11,
+      "brand": "siu",
+      "type": "Washing Machine",
+      "description": "as",
+      "hoursPerWeek": "7"
     }
   ],
   "rooms": [
