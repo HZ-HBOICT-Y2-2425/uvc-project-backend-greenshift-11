@@ -38,6 +38,20 @@
       "type": "Washing Machine",
       "description": "A front-load washing machine with multiple wash programs.",
       "hoursPerWeek": 14
+    },
+    {
+      "id": 5,
+      "brand": "Yes",
+      "type": "Dryer",
+      "description": "zzzzz",
+      "hoursPerWeek": "111"
+    },
+    {
+      "id": 6,
+      "brand": "Samsung",
+      "type": "Rice Cooker",
+      "description": "a",
+      "hoursPerWeek": "7"
     }
   ],
   "rooms": [
@@ -45,19 +59,26 @@
       "id": 0,
       "name": "Living Room",
       "icon": "https://example.com/icons/living_room.png",
-      "appliances": [2, 3]
+      "appliances": [
+        2,
+        3
+      ]
     },
     {
       "id": 1,
       "name": "Kitchen",
       "icon": "https://example.com/icons/kitchen.png",
-      "appliances": [0]
+      "appliances": [
+        0
+      ]
     },
     {
       "id": 2,
       "name": "Laundry Room",
       "icon": "https://example.com/icons/laundry_room.png",
-      "appliances": [4]
+      "appliances": [
+        4
+      ]
     },
     {
       "id": 3,
@@ -69,7 +90,9 @@
       "id": 4,
       "name": "Storage",
       "icon": "https://example.com/icons/storage.png",
-      "appliances": [1]
+      "appliances": [
+        1
+      ]
     }
   ]
 }

@@ -15,51 +15,49 @@ export async function updateAppliance(req, res) {
   let id = Number(req.params.id);
   let appliance = appliances.find(appliance => appliance.id === id);
   if (appliance) {
-    let id = req.query.id;
     let brand = req.query.brand;
     let type = req.query.type;
     let description = req.query.description;
     let hoursPerWeek = req.query.hoursPerWeek;
-    let appliance = {id: id, brand: brand, type: type, description: description, hoursPerWeek: hoursPerWeek};  
+    appliance = { id: id, brand: brand, type: type, description: description, hoursPerWeek: hoursPerWeek };  
     // todo remove log
     console.log(appliance);
     appliances.push(appliance);
     await db.write();
     res.status(201).send(`I updated this appliance: ${JSON.stringify(appliance)}?`);
-  }
-  else{
-    res.status(404).send(`The appliance with id ${JSON.stringify(appliance)}? doesnt exist`);
+  } else {
+    res.status(404).send(`The appliance with id ${id} doesn't exist`);
   }
 }
 
 export async function getApplianceById(req, res) {
-  let id = Number(req.params.id);
-  let appliance = appliances.find(appliance => appliance.id === id);
+  const db = readDatabase();
+  console.log('Database contents:', db.appliances); // Log all appliances
+  const appliance = db.appliances.find(a => a.id === parseInt(req.params.id));
+  console.log(`Looking for appliance with id: ${req.params.id}, found:`, appliance);
+
   if (appliance) {
-    res.status(200).send(appliance);
+    res.status(200).json(appliance);
   } else {
-    res.status(404).send('Appliance not found');
+    res.status(404).json({ message: 'Appliance not found' });
   }
 }
 
 export async function createAppliance(req, res) {
-  let id = Number(req.params.id);
-  let appliance = appliances.find(appliance => appliance.id === id);
-  if (appliance) {
-    res.status(404).send("This id is already occupied");
-  } else {
-    let brand = req.query.brand;
-    let type = req.query.type;
-    let description = req.query.description;
-    let hoursPerWeek = req.query.hoursPerWeek;
-    let appliance = {id: id, brand: brand, type: type, description: description, hoursPerWeek: hoursPerWeek};  
-    // todo remove log
-    console.log(appliance);
-    appliances.push(appliance);
-    await db.write();
-
-    res.status(201).send(`I added this appliance: ${JSON.stringify(appliance)}?`);
+  let id = 1;
+  while (appliances.find(appliance => appliance.id === id)) {
+    id++;
   }
+  let brand = req.query.brand;
+  let type = req.query.type;
+  let description = req.query.description;
+  let hoursPerWeek = req.query.hoursPerWeek;
+  let appliance = { id: id, brand: brand, type: type, description: description, hoursPerWeek: hoursPerWeek };  
+  // todo remove log
+  console.log(appliance);
+  appliances.push(appliance);
+  await db.write();
+  res.status(201).json({ message: "Appliance created successfully" });
 }
 
 export async function deleteAppliancesByIDs(req, res) {
@@ -85,4 +83,29 @@ export async function deleteAppliancesByIDs(req, res) {
     await db.write();
     res.status(200).send(`${IDsLeft}`);
   }
+}
+
+//used only for displaying the appliances
+export async function getNames(req, res) {
+  const db = readDatabase();
+  console.log('Appliances:', db.appliances); // Log appliances
+  const appliances = db.appliances;
+
+  const ids = appliances.map(appliance => appliance.id);
+  const brands = appliances.map(appliance => appliance.brand);
+  const types = appliances.map(appliance => appliance.type);
+
+  res.json({ ids, brands, types });
+}
+
+//used purely for the graph
+export async function getApplianceUsage(req, res) {
+  const db = readDatabase();
+  const appliances = db.appliances;
+
+  const series = appliances.map(appliance => appliance.hoursPerWeek);
+  const categories = appliances.map(appliance => appliance.brand);
+  const labels = appliances.map(appliance => appliance.type);
+
+  res.json({ series: [{ data: series }], categories, labels });
 }
