@@ -5,21 +5,62 @@ import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 
-// Get the absolute path to the db.json file
 const dbPath = path.resolve('./db.json');
 
-// Helper function to read from db.json
 const readDatabase = () => {
-  const data = fs.readFileSync(dbPath, 'utf-8');
-  return JSON.parse(data);
+ const data = fs.readFileSync(dbPath, 'utf-8');
+ return JSON.parse(data);
 };
 
-// Helper function to write to db.json
 const writeDatabase = (data) => {
-  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf-8');
+ fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf-8');
 };
+
+export async function getItems(req, res) {
+  try {
+    const db = readDatabase();
+    res.status(200).json(db.items);
+  } catch (error) {
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
 
 export async function addUser(req, res) {
+ try {
+   const { name, email, password } = req.body;
+
+   if (!name || !email || !password) {
+     return res.status(400).json({ message: 'Missing required fields' });
+   }
+
+   const db = readDatabase();
+   const userExists = db.users.some((user) => user.user === name);
+
+   if (userExists) {
+     return res.status(409).json({ message: 'User already exists' });
+   }
+
+   const hashedPassword = await hash(password, 10);
+
+   const newUser = {
+     id: db.users.length + 1,
+     user: name,
+     email,
+     password: hashedPassword,
+     currency: 500, // Starting currency
+     inventory: [], // Initialize inventory
+     notes: [],
+   };
+
+   db.users.push(newUser);
+   writeDatabase(db);
+
+   res.status(201).json({ message: 'User registered successfully', user: newUser });
+ } catch (error) {
+   console.error('Error adding user:', error);
+   res.status(500).json({ message: 'Internal server error' });
+ }
+}
     try {
       const { name, email, password } = req.body;
   
@@ -56,49 +97,120 @@ export async function addUser(req, res) {
     }
   }
 
-  export async function loginUser(req, res) {
-    try {
-        const { name, password } = req.body;
+export async function loginUser(req, res) {
+ try {
+   const { name, password } = req.body;
 
-        if (!name || !password) {
-            return res.status(400).json({ message: 'Name and password are required' });
-        }
+   if (!name || !password) {
+     return res.status(400).json({ message: 'Name and password are required' });
+   }
 
-        // Load users from db.json
-        const db = readDatabase();
-        const user = db.users.find((u) => u.user === name);
+   const db = readDatabase();
+   const user = db.users.find((u) => u.user === name);
 
-        if (!user) {
-            return res.status(404).json({ message: 'User does not exist' });
-        }
+   if (!user) {
+     return res.status(404).json({ message: 'User does not exist' });
+   }
 
-        // Compare provided password with hashed password
-        const isPasswordValid = await compare(password, user.password);
-        if (!isPasswordValid) {
-            return res.status(401).json({ message: 'Incorrect password' });
-        }
+   const isPasswordValid = await compare(password, user.password);
+   if (!isPasswordValid) {
+     return res.status(401).json({ message: 'Incorrect password' });
+   }
 
-        // Generate an access token
-        const accessToken = generateAccessToken({ user: user.user });
+   const accessToken = generateAccessToken({ user: user.user });
 
-        res.json({ accessToken, username: user.user, message: 'Login successful' });
-    } catch (error) {
-        console.error('Error during login:', error);
-        res.status(500).json({ message: 'Internal server error' });
-    }
+   res.json({ accessToken, username: user.user, message: 'Login successful' });
+ } catch (error) {
+   console.error('Error during login:', error);
+   res.status(500).json({ message: 'Internal server error' });
+ }
 }
 
-export async function logoutUser(req, res) {
-    // Logout logic placeholder
-    res.status(204).send('Logged out');
+export async function getCurrency(req, res) {
+ try {
+   const { user } = req.params;
+   const db = readDatabase();
+   const foundUser = db.users.find((u) => u.user === user);
+   
+   if (!foundUser) {
+     return res.status(404).json({ message: 'User not found' });
+   }
+   
+   res.status(200).json({ currency: foundUser.currency });
+ } catch (error) {
+   res.status(500).json({ message: 'Internal server error' });
+ }
 }
 
+export async function getInventory(req, res) {
+ try {
+   const { user } = req.params;
+   const db = readDatabase();
+   const foundUser = db.users.find((u) => u.user === user);
+   
+   if (!foundUser) {
+     return res.status(404).json({ message: 'User not found' });
+   }
+   
+   res.status(200).json({ inventory: foundUser.inventory || [] });
+ } catch (error) {
+   res.status(500).json({ message: 'Internal server error' });
+ }
+}
+
+export async function purchaseItem(req, res) {
+ try {
+   const { user, itemId, type, price } = req.body;
+   const db = readDatabase();
+   const foundUser = db.users.find((u) => u.user === user);
+
+   if (!foundUser) {
+     return res.status(404).json({ message: 'User not found' });
+   }
+
+   if (foundUser.currency < price) {
+     return res.status(400).json({ message: 'Insufficient funds' });
+   }
+
+   foundUser.inventory = foundUser.inventory || [];
+   
+   const existingItem = foundUser.inventory.find(i => i.itemId === itemId && i.type === type);
+   if (existingItem) {
+     if (existingItem.quantity >= 5) {
+       return res.status(400).json({ message: 'Maximum quantity reached' });
+     }
+     existingItem.quantity++;
+   } else {
+     foundUser.inventory.push({ itemId, type, quantity: 1 });
+   }
+
+   foundUser.currency -= price;
+   writeDatabase(db);
+
+   res.status(200).json({ 
+     message: 'Purchase successful',
+     newBalance: foundUser.currency,
+     inventory: foundUser.inventory
+   });
+ } catch (error) {
+   res.status(500).json({ message: 'Internal server error' });
+ }
+}
+
+// Keep existing helper functions
 function generateAccessToken(user) {
-    return sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+ return sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 }
 
-//get all users
 export async function getUsers(req, res) {
+ try {
+   const db = readDatabase();
+   res.status(200).json(db.users);
+ } catch (error) {
+   console.error('Error fetching users:', error);
+   res.status(500).json({ message: 'Internal server error' });
+ }
+}
     try {
       const db = readDatabase();
       res.status(200).json(db.users);
@@ -140,6 +252,29 @@ export async function getUserDetails(req, res) {
   }
 }
 
+export async function addNote(req, res) {
+ try {
+   const { user, note, date } = req.body;
+   const db = readDatabase();
+   const foundUser = db.users.find((u) => u.user === user);
+
+   if (!foundUser) {
+     return res.status(404).json({ message: 'User not found' });
+   }
+
+   if (!note || !date) {
+     return res.status(400).json({ message: 'Note and date are required' });
+   }
+
+   foundUser.notes.push({ date, note });
+   writeDatabase(db);
+
+   res.status(201).json({ message: 'Note added successfully', notes: foundUser.notes });
+ } catch (error) {
+   console.error('Error adding note:', error);
+   res.status(500).json({ message: 'Internal server error' });
+ }
+}
 // Add a note for a user
 export async function addNote(req, res) { 
     try {
@@ -166,8 +301,51 @@ export async function addNote(req, res) {
     }
   }
 
-// Get notes for a user
 export async function getNotes(req, res) {
+ try {
+   const { user } = req.params;
+   const db = readDatabase();
+   const foundUser = db.users.find((u) => u.user === user);
+
+   if (!foundUser) {
+     return res.status(404).json({ message: 'User not found' });
+   }
+
+   res.status(200).json({ notes: foundUser.notes });
+ } catch (error) {
+   console.error('Error fetching notes:', error);
+   res.status(500).json({ message: 'Internal server error' });
+ }
+}
+  export async function updateUserCategories(req, res) {
+    try {
+        const { user, categories } = req.body;
+
+        if (!user || !categories) {
+            return res.status(400).json({ message: 'User and categories are required' });
+        }
+
+        // Load the database
+        const db = readDatabase();
+        const foundUser = db.users.find((u) => u.user === user);
+
+        if (!foundUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Update categories
+        console.log("Before update:", foundUser.categories);
+        foundUser.categories = categories;
+        writeDatabase(db);
+        console.log("After update:", foundUser.categories);
+
+        res.status(200).json({ message: 'Categories updated successfully', categories: foundUser.categories });
+    } catch (error) {
+        console.error('Error updating categories:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+    
+}
     try {
       const { user } = req.params;
   
@@ -250,3 +428,134 @@ export async function updateCompletedTasks(req, res) {
 
 
 
+// Function to get details of a single user
+export async function getUserDetails(req, res) {
+  try {
+    const { identifier } = req.params; // Extract identifier (id, username, or email) from URL params
+
+    if (!identifier) {
+      return res.status(400).json({ message: "Identifier (id, username, or email) is required." });
+    }
+
+    const db = readDatabase();
+    let foundUser;
+
+    // Try to parse identifier as an ID, otherwise match by user or email
+    if (!isNaN(identifier)) {
+      // Numeric ID
+      foundUser = db.users.find((u) => u.id === Number(identifier));
+    } else {
+      // Match by username or email
+      foundUser = db.users.find((u) => u.user === identifier || u.email === identifier);
+    }
+
+    if (!foundUser) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    res.status(200).json({ user: foundUser });
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export async function updateUser(req, res) {
+  try {
+    const { name, email } = req.body;
+    const username = req.params.identifier;
+    
+    if (!name || !email) {
+      return res.status(400).json({ message: 'Name and email are required' });
+    }
+    
+    const db = readDatabase();
+    const userIndex = db.users.findIndex((u) => u.user === username);
+    
+    if (userIndex === -1) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+    // Update user information
+    db.users[userIndex] = {
+      ...db.users[userIndex],
+      user: name,
+      email: email,
+    };
+    
+    writeDatabase(db);
+    
+    res.status(200).json({  
+      user: db.users[userIndex]
+    });
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
+// Function to get details of a single user
+export async function getUserDetails(req, res) {
+  try {
+    const { identifier } = req.params; // Extract identifier (id, username, or email) from URL params
+
+    if (!identifier) {
+      return res.status(400).json({ message: "Identifier (id, username, or email) is required." });
+    }
+
+    const db = readDatabase();
+    let foundUser;
+
+    // Try to parse identifier as an ID, otherwise match by user or email
+    if (!isNaN(identifier)) {
+      // Numeric ID
+      foundUser = db.users.find((u) => u.id === Number(identifier));
+    } else {
+      // Match by username or email
+      foundUser = db.users.find((u) => u.user === identifier || u.email === identifier);
+    }
+
+    if (!foundUser) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    res.status(200).json({ user: foundUser });
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export async function updateUser(req, res) {
+  try {
+    const { name, email } = req.body;
+    const username = req.params.identifier;
+    
+    if (!name || !email) {
+      return res.status(400).json({ message: 'Name and email are required' });
+    }
+    
+    const db = readDatabase();
+    const userIndex = db.users.findIndex((u) => u.user === username);
+    
+    if (userIndex === -1) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+    // Update user information
+    db.users[userIndex] = {
+      ...db.users[userIndex],
+      user: name,
+      email: email,
+    };
+    
+    writeDatabase(db);
+    
+    res.status(200).json({  
+      user: db.users[userIndex]
+    });
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
