@@ -132,66 +132,79 @@
   "users": [
     {
       "id": 1,
-      "user": "JohnTheGreat",
+      "user": "John",
       "email": "aydotjohn@gmail.com",
-      "password": "$2b$10$VI2bJogff5jqjQhlx2c14uicSPEPoHxyG2fGxKFFGEDSAZMuQjcTS",
+      "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
       "currency": 0,
       "notes": [
         {
-          "date": "2024-12-11",
+          "date": "2025-01-08",
+          "note": "notes 1"
+        },
+        {
+          "date": "2024-12-31",
+          "note": "note 2 "
+        },
+        {
+          "date": "2025-01-01",
+          "note": "note"
+        },
+        {
+          "date": "2025-01-01",
           "note": "note"
         }
+      ],
+      "completedTasks": [
+        "Encourage a power-off habit for all appliances before bedtime.",
+        "Turn off your TV and monitor when not in use.",
+        "Defrost your freezer if ice build-up is more than 1/4 inch thick to improve efficiency."
       ]
     },
     {
       "id": 2,
       "user": "Joeri",
-      "email": "joeriharreman@zeelandnet.nl",
-      "password": "$2b$10$LWjNiPMLUnq6hVgWqtwyKeuUHsWLyUjAPe9Dd.g9Ua.dzJDhVB8AG",
-      "currency": 0,
-      "notes": [
-        {
-          "date": "2024-12-04",
-          "note": "hellp"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "user": "Joeri2",
-      "email": "as@something",
-      "password": "$2b$10$Ryor97EjTptOndMI/AucRO0FX6VSup/OlDLWaxxF6vUMfF7cEGntW",
-      "currency": 0,
-      "notes": []
-    },
-    {
-      "id": 2,
-      "user": "innit",
-      "email": "example@email",
-      "password": "$2b$10$18rHhrtXTFI.x.dCwElLVOVcxxBQWUlOV/rIDntfMJT6K2bPsbv7y",
-      "currency": 114,
-      "notes": [],
+      "email": "Joeri@harreman.nl",
+      "password": "$2b$10$3Gd0jqkoXqISolj4v.IgIOmM7CbTmnERA4ISoCS50FlYytEiN2mVe",
+      "currency": 425,
       "inventory": [
         {
           "itemId": 4,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 3,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 4,
           "type": "animal",
-          "quantity": 2
+          "quantity": 1
         },
         {
           "itemId": 1,
-          "type": "plant",
-          "quantity": 1
-        },
-        {
-          "itemId": 2,
-          "type": "plant",
-          "quantity": 2
-        },
-        {
-          "itemId": 2,
           "type": "animal",
-          "quantity": 1
+          "quantity": 2
         }
+      ],
+      "notes": [
+        {
+          "date": "2025-01-08",
+          "note": "hello\n"
+        }
+      ],
+      "completedTasks": [
+        "Switch to energy-efficient light bulbs (LED).",
+        "Monitor fridge temperature and ensure it is between 3°C and 5°C to save energy.",
+        "Monitor energy usage using apps like smart energy monitors.",
+        "Remember to not leave your devices plugged in.",
+        "Turn off the AC when not at home.",
+        "Remember to avoid leaving the fridge open too long.",
+        "Adjust your screen brightness to a lower level.",
+        "Encourage a power-off habit for all appliances before bedtime.",
+        "Keep AC filters clean by washing or replacing them monthly.",
+        "Cook with lids on pots to reduce cooking time and energy."
       ]
     },
     {
