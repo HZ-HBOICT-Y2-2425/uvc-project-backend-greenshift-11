@@ -1,7 +1,11 @@
-import { Low, JSONFile } from 'lowdb';
+import {JSONFile} from 'lowdb/node';
+import {Low} from 'lowdb';
 
-const file = new JSONFile('db.json');
-const db = new Low(file);
+// Initialize the adapter and database
+const adapter = new JSONFile('db.json');
+const db = new Low(adapter,{});
+
+
 await db.read(); 
 
 if (!db.data) {
@@ -43,7 +47,6 @@ export async function getRoomById(req, res) {
     res.status(404).json({ message: 'Room not found' });
   }
 
-  res.status(200).json(room);
 }
 
 // Create a new room
@@ -64,22 +67,16 @@ export async function createRoom(req, res) {
 
 // Delete rooms by ID range
 export async function deleteRoomsByIDs(req, res) {
-  let startID = Number(req.params.start);
-  let endID = Number(req.params.end);
-  
-  if (startID > endID) {
-    return res.status(400).send("The end id must be greater than or equal to start id");
+  let id = Number(req.params.id);  
+  let index = rooms.findIndex(room => room.id === id);
+  if (index===-1) {
+    res.status(404).send(`The room with id ${id} doesn't exist`);    
   }
-
-  let initialLength = rooms.length; // Store the initial length to avoid deleting in an iteration issue
-  rooms = rooms.filter(room => room.id < startID || room.id > endID);
-  
-  if (rooms.length < initialLength) {
+  else {
+    rooms.splice(index, 1);
     await db.write();
-    res.status(200).send(`Removed rooms with IDs from ${startID} to ${endID}`);
-  } else {
-    res.status(404).send("No rooms were deleted, please check the IDs");
-  }
+    res.status(200).send(`Removed room with id ${id}`);
+  }    
 }
 
 export async function getRoomNames(req, res) {

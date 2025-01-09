@@ -70,27 +70,15 @@ export async function createAppliance(req, res) {
 }
 
 export async function deleteAppliancesByIDs(req, res) {
-  let startID = Number(req.params.start);
-  let endID = Number(req.params.end);
-  if(startID > endID){
-    res.status(404).send("the end id is smaller or the same as start id");
+  let id = Number(req.params.id);  
+  let index = appliances.findIndex(room => room.id === id);
+  if (index===-1) {
+    res.status(404).send(`The appliance with id ${id} doesn't exist`);    
   }
-  else{
-    let indexes = [];
-    for(let id = startID; id <= endID; id++){
-      if(appliances.find(appliance => appliance.id ===id)){
-        let i = appliances.indexOf(appliances.find(appliance => appliance.id ===id));
-        indexes.push(i);
-      }
-      else{
-        console.log(`There is no appliance with id: ${id}`);
-      }
-    }
-    indexes.forEach(index => appliances.splice(index)); 
-    let IDsLeft = [];
-    appliances.forEach(appliance => {IDsLeft.push(appliance.id)});
+  else {
+    appliances.splice(index, 1);
     await db.write();
-    res.status(200).send(`${IDsLeft}`);
+    res.status(200).send(`Removed appliance with id ${id}`);
   }
 }
 
