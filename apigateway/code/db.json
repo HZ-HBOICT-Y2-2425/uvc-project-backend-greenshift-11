@@ -148,8 +148,97 @@
         {
           "date": "2024-12-15",
           "note": "Move the tasks to the right hand side and make the calendar bar central with the search as a header."
+        },
+        {
+          "date": "2025-01-07",
+          "note": "no"
         }
       ]
+    },
+    {
+      "id": 2,
+      "user": "onyosnitchin",
+      "email": "switches@gmail.com",
+      "password": "$2b$10$t8p6np0j.IW14UlG8qEXSOVmJ7SVw09m8TSjhgw75xW9R9YvjTXWa",
+      "currency": 0,
+      "notes": [],
+      "categories": []
+    },
+    {
+      "id": 3,
+      "user": "John",
+      "email": "aydotjohn@gmail.com",
+      "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
+      "currency": 0,
+      "notes": [
+        {
+          "date": "2025-01-08",
+          "note": "notes 1"
+        },
+        {
+          "date": "2024-12-31",
+          "note": "note 2 "
+        },
+        {
+          "date": "2025-01-01",
+          "note": "note"
+        },
+        {
+          "date": "2025-01-01",
+          "note": "note"
+        }
+      ],
+      "completedTasks": [
+        "Encourage a power-off habit for all appliances before bedtime.",
+        "Turn off your TV and monitor when not in use.",
+        "Defrost your freezer if ice build-up is more than 1/4 inch thick to improve efficiency."
+      ]
+    },
+    {
+      "id": 4,
+      "user": "username",
+      "email": "user@example.com",
+      "password": "$2b$10$7Ew0TrSR7XZmx602mAdPy.qC8MHfsARLn9XVnmD6WYC6xS6Lv8Mae",
+      "currency": 0,
+      "notes": [
+        {
+          "date": "2025-01-07",
+          "note": "this is a note "
+        }
+      ],
+      "completedTasks": []
+    },
+    {
+      "id": 5,
+      "user": "usersname",
+      "email": "newemail@gmail.com",
+      "password": "$2b$10$awFZvXF2ARW48OE4T3R/iOJiGH4L16PGXUyqsG0ihZMRBFBGfW7Ou",
+      "currency": 0,
+      "notes": [],
+      "categories": []
+    },
+    {
+      "id": 4,
+      "user": "Joeri",
+      "email": "Joeri@harreman.nl",
+      "password": "$2b$10$XMlvGTethiEc5fxvk9jf4Ohub9XRksiyk..ep8bjVT2vQXAhgkjAe",
+      "currency": 0,
+      "notes": [
+        {
+          "date": "2025-02-04",
+          "note": "some"
+        }
+      ],
+      "categories": []
+    },
+    {
+      "id": 5,
+      "user": "Joeri",
+      "email": "joeri@hello",
+      "password": "$2b$10$5fGilIrCXeB6TS2dAecTQeIcwEIy0FTVrovpgvA/mKwPc1uMX4MVK",
+      "currency": 0,
+      "notes": [],
+      "categories": []
     },
     {
       "id": 2,

@@ -10,13 +10,16 @@ import {
   purchaseItem,  // new 
   getCurrency,    // imports
   getItems,  // new
- updateUserCategories, proxyUpdateTasksByCategory,} from '../controllers/exampleController.js';
+  updateCompletedTasks,
+    getUserDetails,
+     updateUser, } from '../controllers/exampleController.js';
 
 const router = express.Router();
 
 router.post('/signup', addUser);
 router.post('/login', loginUser);
 router.get('/users', getUsers);
+router.get('/users/:identifier', getUserDetails);
 router.post('/notes', addNote);
 router.get('/notes/:user', getNotes);
 router.get('/currency/:user', authenticateToken, getCurrency);
@@ -24,9 +27,9 @@ router.get('/inventory/:user', authenticateToken, getInventory);
 router.post('/purchase', authenticateToken, purchaseItem);
 router.get('/items', getItems);
 
-router.put("/users/categories", updateUserCategories);
-router.put('/tasks/:category', proxyUpdateTasksByCategory);
-
+router.get('/users/:identifier', getUserDetails);
+router.put('/users/:identifier', updateUser);
+router.put('/completed-tasks', updateCompletedTasks);
 
 router.get('/protected', authenticateToken, (req, res) => {
     res.json({ message: 'You accessed a protected route', user: req.user });

@@ -2,7 +2,8 @@ import express from "express";
 const app = express();
 const PORT = 3011;
 
-const tasks = {
+// Store original category information to know which tasks can be refreshed
+const originalTasks = {
   large_appliances: [
     "Monitor fridge temperature and ensure it is between 3°C and 5°C to save energy.",
     "Defrost your freezer if ice build-up is more than 1/4 inch thick to improve efficiency.",
@@ -47,45 +48,54 @@ const tasks = {
     "Remember to not leave your devices plugged in."
   ]
 };
+
+// Create consolidated tasks array with metadata
+const allTasks = [
+  ...originalTasks.general_users.map(task => ({
+    text: task,
+    isRefreshable: false,
+    category: 'general_users',
+    funFact: task.includes("energy-efficient") 
+      ? "Fun Fact: LED bulbs use about 75% less energy than incandescent bulbs!" 
+      : null,
+  })),
+  ...originalTasks.large_appliances.map(task => ({
+    text: task,
+    isRefreshable: true,
+    category: 'large_appliances',
+    funFact: task.includes("fridge") 
+      ? "Fun Fact: Keeping your fridge at 3°C to 5°C can save up to 15% energy!" 
+      : null,
+  })),
+  ...originalTasks.multiple_devices.map(task => ({
+    text: task,
+    isRefreshable: true,
+    category: 'multiple_devices',
+    funFact: task.includes("phone chargers") 
+      ? "Fun Fact: Unplugging chargers can save up to $100 per year in energy costs!" 
+      : null,
+  }))
+];
+
+// Get all tasks with refresh information
+export const getAllTasks = (req, res) => {
+  res.status(200).json({ tasks: allTasks });
+};
+
+// Get alternative task of same category
+export const getAlternativeTask = (req, res) => {
+  const { category } = req.params;
+  const { currentTask } = req.query;
   
-  export const getTasksByCategory = (req, res) => {
-    const { category } = req.params;
-    if (tasks[category]) {
-      res.status(200).json({ tasks: tasks[category] });
-    } else {
-      res.status(404).json({ error: "Category not found" });
-    }
-  };
+  const categoryTasks = allTasks.filter(task => 
+    task.category === category && 
+    task.text !== currentTask
+  );
   
-  export const getAllCategories = (req, res) => {
-    res.status(200).json({ categories: Object.keys(tasks) });
-  };
+  if (categoryTasks.length === 0) {
+    return res.status(404).json({ error: "No alternative tasks available" });
+  }
   
-  export const updateTasksByCategory = (req, res) => {
-    const { category } = req.params; // Category from URL params
-    const { tasks: newTasks } = req.body; // Tasks array from request body
-  
-    console.log("Updating tasks for category:", category);
-    console.log("New tasks:", newTasks);
-  
-    // Validate input
-    if (!category || !newTasks || !Array.isArray(newTasks)) {
-      return res
-        .status(400)
-        .json({ message: "Category and tasks array are required." });
-    }
-  
-    // Check if the category exists
-    if (!tasks[category]) {
-      return res.status(404).json({ message: "Category not found." });
-    }
-  
-    // Append the new tasks to the existing tasks
-    tasks[category] = [...tasks[category], ...newTasks];
-  
-    console.log(`Tasks for category "${category}" updated successfully.`);
-    res.status(200).json({
-      message: `Tasks updated for category: ${category}`,
-      tasks: tasks[category],
-    });
-  };
+  const randomTask = categoryTasks[Math.floor(Math.random() * categoryTasks.length)];
+  res.status(200).json({ task: randomTask });
+};
