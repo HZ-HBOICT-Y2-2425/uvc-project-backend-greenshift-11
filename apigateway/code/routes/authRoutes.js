@@ -1,17 +1,16 @@
 import express from 'express';
 import { authenticateToken } from '../middleware/exampleMiddleware.js';
-import { addUser, loginUser, getUsers, addNote, getNotes, updateUserCategories, proxyUpdateTasksByCategory,} from '../controllers/exampleController.js';
+import { addUser, loginUser, getUsers, addNote, getNotes, getUserDetails, updateCompletedTasks} from '../controllers/exampleController.js';
 
 const router = express.Router();
 
 router.post('/signup', addUser);
 router.post('/login', loginUser);
 router.get('/users', getUsers);
+router.get('/users/:identifier', getUserDetails);
 router.post('/notes', addNote);
 router.get('/notes/:user', getNotes);
-router.put("/users/categories", updateUserCategories);
-router.put('/tasks/:category', proxyUpdateTasksByCategory);
-
+router.put('/completed-tasks', updateCompletedTasks);
 
 router.get('/protected', authenticateToken, (req, res) => {
     res.json({ message: 'You accessed a protected route', user: req.user });
