@@ -10,11 +10,9 @@ import {
   purchaseItem,  // new 
   getCurrency,    // imports
   getItems,  // new
-  updateUserCategories,
-   proxyUpdateTasksByCategory,
+  updateCompletedTasks,
     getUserDetails,
      updateUser, } from '../controllers/exampleController.js';
-import { addUser, loginUser, getUsers, addNote, getNotes, getUserDetails, updateCompletedTasks} from '../controllers/exampleController.js';
 
 const router = express.Router();
 
@@ -29,8 +27,6 @@ router.get('/inventory/:user', authenticateToken, getInventory);
 router.post('/purchase', authenticateToken, purchaseItem);
 router.get('/items', getItems);
 
-router.put("/users/categories", updateUserCategories);
-router.put('/tasks/:category', proxyUpdateTasksByCategory);
 router.get('/users/:identifier', getUserDetails);
 router.put('/users/:identifier', updateUser);
 router.put('/completed-tasks', updateCompletedTasks);

@@ -166,7 +166,7 @@
     },
     {
       "id": 3,
-      "user": "woop",
+      "user": "John",
       "email": "aydotjohn@gmail.com",
       "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
       "currency": 0,
@@ -191,9 +191,7 @@
       "completedTasks": [
         "Encourage a power-off habit for all appliances before bedtime.",
         "Turn off your TV and monitor when not in use.",
-        "Defrost your freezer if ice build-up is more than 1/4 inch thick to improve efficiency.",
-        "Reduce microwave usage; use a stove for quick heating.",
-        "Use natural daylight for indoor lighting during the day."
+        "Defrost your freezer if ice build-up is more than 1/4 inch thick to improve efficiency."
       ]
     },
     {
