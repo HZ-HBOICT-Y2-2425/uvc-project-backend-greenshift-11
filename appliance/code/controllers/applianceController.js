@@ -14,16 +14,16 @@ export async function getAllAppliances(req, res) {
 export async function updateAppliance(req, res) {
   let id = Number(req.params.id);
   let appliance = appliances.find(appliance => appliance.id === id);
-  if (appliance) {
-    let brand = req.query.brand;
-    let type = req.query.type;
-    let description = req.query.description;
-    let hoursPerWeek = req.query.hoursPerWeek;
-    appliance = { id: id, brand: brand, type: type, description: description, hoursPerWeek: hoursPerWeek };  
-    // todo remove log
-    console.log(appliance);
+  if (appliance) {    
+    const { brand, type, description,hoursPerWeek } = req.body;
+    appliance.id=id;
+    appliance.brand=brand;
+    appliance.type=type;
+    appliance.description=description;
+    appliance.hoursPerWeek=hoursPerWeek;
+   
     await db.write();
-    res.status(201).send(`I updated this appliance: ${JSON.stringify(appliance)}?`);
+    res.status(201).json(`${JSON.stringify(appliance)}`);
   } else {
     res.status(404).send(`The appliance with id ${id} doesn't exist`);
   }
