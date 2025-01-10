@@ -22,5 +22,6 @@ router.post('/room', checkName, createRoom);
 router.put('/room/:id', checkName, updateRoom);
 router.delete('/room/:id', checkName, deleteRoomsByIDs);
 router.get('/api/room-names', checkName, getRoomNames);
+router.get('/api/appliance-names', checkName, getNames);
 
 export default router;

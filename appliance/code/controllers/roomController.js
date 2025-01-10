@@ -55,9 +55,8 @@ export async function createRoom(req, res) {
   while (rooms.find(room => room.id === id)) {
     id++;
   }
-  let name = req.query.name;
-  let icon = req.query.icon;
-  let appliances = req.query.appliances;
+ 
+  const { name, icon, appliances } = req.body;
   let room = { id, name, icon, appliances };  
   
   rooms.push(room);
