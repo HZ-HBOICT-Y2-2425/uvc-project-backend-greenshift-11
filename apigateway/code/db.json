@@ -135,7 +135,7 @@
       "user": "John",
       "email": "aydotjohn@gmail.com",
       "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
-      "currency": 0,
+      "currency": 463,
       "notes": [
         {
           "date": "2025-01-08",
@@ -152,12 +152,45 @@
         {
           "date": "2025-01-01",
           "note": "note"
+        },
+        {
+          "date": "2025-01-10",
+          "note": "feel i could have done better today :((("
         }
       ],
       "completedTasks": [
         "Encourage a power-off habit for all appliances before bedtime.",
         "Turn off your TV and monitor when not in use.",
-        "Defrost your freezer if ice build-up is more than 1/4 inch thick to improve efficiency."
+        "Defrost your freezer if ice build-up is more than 1/4 inch thick to improve efficiency.",
+        "Turn off lights and fans when leaving the room.",
+        "Avoid boiling excess water when using an electric kettle.",
+        "Clean the fridge coils every 6 months to maintain energy efficiency.",
+        "Schedule a 'no appliance hour' every evening to reduce overall energy consumption.",
+        "Adjust your screen brightness to a lower level.",
+        "Unplug the washing machine and dryer when not in use.",
+        "Set devices to low power mode to extend battery life.",
+        "Use natural daylight for indoor lighting during the day.",
+        "Reduce unnecessary use of fans and encourage natural ventilation.",
+        "Enable sleep mode on computers and laptops after 5 minutes of inactivity.",
+        "Switch to energy-efficient light bulbs (LED).",
+        "Monitor energy usage using apps like smart energy monitors."
+      ],
+      "inventory": [
+        {
+          "itemId": 2,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 1,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 3,
+          "type": "plant",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -214,7 +247,8 @@
       "password": "$2b$10$XrWFF9ws2TGbTFerVBZk8eLxc9OBkzn.62.Qi3.k90pZdb0EGx.ze",
       "currency": 500,
       "inventory": [],
-      "notes": []
+      "notes": [],
+      "completedTasks": []
     },
     {
       "id": 4,

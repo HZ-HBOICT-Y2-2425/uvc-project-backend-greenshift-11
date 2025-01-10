@@ -79,14 +79,28 @@
       "brand": "OLG",
       "type": "Washing Machine",
       "description": "A small fridge",
-      "hoursPerWeek": 6
+      "hoursPerWeek": 80
     },
     {
       "id": 11,
       "brand": "OLG",
       "type": "Electric Grill",
       "description": "A small fridge",
-      "hoursPerWeek": 50
+      "hoursPerWeek": 80
+    },
+    {
+      "id": 12,
+      "brand": "OLG",
+      "type": "Blender",
+      "description": "A small fridge",
+      "hoursPerWeek": 80
+    },
+    {
+      "id": 13,
+      "brand": "OLG",
+      "type": "Heater",
+      "description": "A small fridge",
+      "hoursPerWeek": 80
     }
   ],
   "rooms": [

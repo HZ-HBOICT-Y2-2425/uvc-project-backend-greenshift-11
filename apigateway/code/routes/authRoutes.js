@@ -12,7 +12,8 @@ import {
   getItems,  // new
   updateCompletedTasks,
     getUserDetails,
-     updateUser, } from '../controllers/exampleController.js';
+     updateUser,
+     getLeaderboard, } from '../controllers/exampleController.js';
 
 const router = express.Router();
 
@@ -26,6 +27,7 @@ router.get('/currency/:user', authenticateToken, getCurrency);
 router.get('/inventory/:user', authenticateToken, getInventory);
 router.post('/purchase', authenticateToken, purchaseItem);
 router.get('/items', getItems);
+router.get('/leaderboard', getLeaderboard);
 
 router.get('/users/:identifier', getUserDetails);
 router.put('/users/:identifier', updateUser);
