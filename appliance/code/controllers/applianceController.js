@@ -87,8 +87,9 @@ export async function getNames(req, res) {
   const ids = appliances.map(appliance => appliance.id);
   const brands = appliances.map(appliance => appliance.brand);
   const types = appliances.map(appliance => appliance.type);
+  const emojis = appliances.map(appliance => appliance.emoji);
 
-  res.json({ ids, brands, types });
+  res.json({ ids, brands, types, emojis });
 }
 
 //used purely for the graph
