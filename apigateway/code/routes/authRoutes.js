@@ -11,7 +11,9 @@ import {
   getCurrency,    // imports
   getItems,  // new
   updateCompletedTasks,
+  updateUserCoins,
     getUserDetails,
+    getStreakCount,
      updateUser,
      getLeaderboard, } from '../controllers/exampleController.js';
 
@@ -32,6 +34,8 @@ router.get('/leaderboard', getLeaderboard);
 router.get('/users/:identifier', getUserDetails);
 router.put('/users/:identifier', updateUser);
 router.put('/completed-tasks', updateCompletedTasks);
+router.put('/:user/update-coins', updateUserCoins);
+router.get('/streak/:user', getStreakCount);
 
 router.get('/protected', authenticateToken, (req, res) => {
     res.json({ message: 'You accessed a protected route', user: req.user });

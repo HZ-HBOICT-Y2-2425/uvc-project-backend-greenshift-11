@@ -51,6 +51,7 @@ export async function addUser(req, res) {
      inventory: [], // Initialize inventory
      notes: [],
      completedTasks: [],
+     streakCount: 0,
    };
 
    db.users.push(newUser);
@@ -375,6 +376,59 @@ export async function getLeaderboard(req, res) {
     res.status(200).json(leaderboard);
   } catch (error) {
     console.error("Error fetching leaderboard:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+//function to update user coins
+export async function updateUserCoins(req, res) {
+  try {
+    const { user } = req.body;
+
+    // Debugging logs
+    console.log("Received request:", req.body);
+
+    if (!user) {
+      console.error("Validation failed. User is missing:", user);
+      return res.status(400).json({ message: "User is required." });
+    }
+
+    const db = readDatabase();
+    const foundUser = db.users.find((u) => u.user === user);
+
+    if (!foundUser) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    // Increment coins by 10
+    foundUser.currency = (foundUser.currency || 0) + 10;
+
+    writeDatabase(db);
+
+    res.status(200).json({
+      message: "Coins updated successfully",
+      coins: foundUser.currency,
+    });
+  } catch (error) {
+    console.error("Error updating user coins:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+//function to get users streakCount
+export async function getStreakCount(req, res) {
+  try {
+    const { user } = req.params;
+    const db = readDatabase();
+    const foundUser = db.users.find((u) => u.user === user);
+
+    if (!foundUser) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    res.status(200).json({ streakCount: foundUser.streakCount });
+  } catch (error) {
+    console.error("Error fetching streak count:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 }
