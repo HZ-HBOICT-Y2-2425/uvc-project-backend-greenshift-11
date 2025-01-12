@@ -135,7 +135,7 @@
       "user": "John",
       "email": "aydotjohn@gmail.com",
       "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
-      "currency": 293,
+      "currency": 198,
       "notes": [
         {
           "date": "2025-01-08",
@@ -160,6 +160,10 @@
         {
           "date": "2025-01-11",
           "note": "bbfbojfbf"
+        },
+        {
+          "date": "2025-01-09",
+          "note": "this is a new note i am writing "
         }
       ],
       "completedTasks": [
@@ -205,6 +209,21 @@
         {
           "itemId": 7,
           "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 5,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 6,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 8,
+          "type": "plant",
           "quantity": 1
         }
       ],
