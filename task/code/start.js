@@ -5,8 +5,8 @@ import cors from 'cors'; // Import CORS middleware
 
 dotenv.config({ path: 'variables.env' });
 
-import indexRouter from './routes/index.js';
-import articlesRouter from './routes/articles.js';
+import tasksRouter from '../../task/code/routes/tasks.js';
+
 
 const app = express();
 
@@ -18,10 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Define routes
-app.use('/api', articlesRouter);
-app.use('/', indexRouter);
+app.use('/api', tasksRouter);
 
-app.set('port', process.env.PORT || 3011);
+app.set('port', process.env.PORT || 3013);
 const server = app.listen(app.get('port'), () => {
   console.log(`🍿 Express running → PORT ${server.address().port}`);
 });
