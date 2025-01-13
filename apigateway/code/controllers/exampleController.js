@@ -51,6 +51,7 @@ export async function addUser(req, res) {
      inventory: [], // Initialize inventory
      notes: [],
      completedTasks: [],
+     co2Footprint: 0,
    };
 
    db.users.push(newUser);
