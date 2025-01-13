@@ -136,6 +136,7 @@
       "email": "aydotjohn@gmail.com",
       "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
       "currency": 0,
+      "co2Footprint": 8.4,
       "notes": [
         {
           "date": "2025-01-08",
@@ -166,6 +167,7 @@
       "email": "Joeri@harreman.nl",
       "password": "$2b$10$3Gd0jqkoXqISolj4v.IgIOmM7CbTmnERA4ISoCS50FlYytEiN2mVe",
       "currency": 425,
+      "co2Footprint": 7.1,
       "inventory": [
         {
           "itemId": 4,
@@ -213,6 +215,7 @@
       "email": "zuzia.myslek@gmail.com",
       "password": "$2b$10$XrWFF9ws2TGbTFerVBZk8eLxc9OBkzn.62.Qi3.k90pZdb0EGx.ze",
       "currency": 500,
+      "co2Footprint": 5.9,
       "inventory": [],
       "notes": []
     },
@@ -222,6 +225,7 @@
       "email": "sjdhfg@example",
       "password": "$2b$10$BjfZK9QW3W0/WoYb4h8U6.VyK52Yre9V46t.sLdoai3qbrF7IOxJi",
       "currency": 500,
+      "co2Footprint": 6.5,
       "inventory": [],
       "notes": [],
       "completedTasks": []
