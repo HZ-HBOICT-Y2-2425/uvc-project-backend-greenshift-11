@@ -118,19 +118,60 @@ export async function getApplianceUsage(req, res) {
 export async function getNames(req, res) {
   const ids = appliances.map(appliance => appliance.id);
   const brands = appliances.map(appliance => appliance.brand);
-  const types = appliances.map(appliance => appliance.type);
+  const types = [...new Set(appliances.map(appliance => appliance.type))];  // Get unique appliance types
   const emojis = appliances.map(appliance => appliance.emoji);
 
   res.json({ ids, brands, types, emojis });
-  res.json({ ids, brands, types, emojis });
 }
 
-//used purely for the graph
-export async function getApplianceUsage(req, res) {
-  console.log('Appliances:', appliances); // Log appliances
-  const series = appliances.map(appliance => appliance.hoursPerWeek);
-  const categories = appliances.map(appliance => appliance.brand);
-  const labels = appliances.map(appliance => appliance.type);
+// Get appliance types
+// Endpoint to fetch appliance types
+export async function getApplianceTypes(req, res) {
+  // Get unique appliance types from the list of appliances
+  const types = [...new Set(appliances.map(appliance => appliance.type))]; // Extract unique types
+  console.log(types);
+  console.log("types");
+  res.status(200).json(types);
+}
 
-  res.json({ series: [{ data: series }], categories, labels });
+export async function getCO2Footprint(req, res) {
+  try {
+    const carbonEmissionFactor = 0.41; // kg CO₂ per kWh
+    const carbonAbsorbedPerTree = 21.77; // kg CO₂ per year (per tree)
+    const averageHouseholdEmissions = 4000; // kg CO₂ per year (global estimate)
+
+    let totalCarbonFootprint = 0;
+
+    appliances.forEach(appliance => {
+      const wattage = appliance.wattage || applianceWattages[appliance.type] || 0; // Use wattage or fallback to type-specific wattage
+      const weeklyEnergy = (wattage * appliance.hoursPerWeek) / 1000; // kWh
+      const annualEnergy = weeklyEnergy * 52; // Annual kWh
+      const carbonEmission = annualEnergy * carbonEmissionFactor; // kg CO₂
+
+      totalCarbonFootprint += carbonEmission;
+    });
+
+    // Calculate trees needed to offset the carbon footprint
+    const treesNeeded = (totalCarbonFootprint / carbonAbsorbedPerTree).toFixed(2);
+
+    // Compare to average household emissions
+    const percentageComparedToAverage = (
+      (totalCarbonFootprint / averageHouseholdEmissions) *
+      100
+    ).toFixed(2);
+
+    // Additional insights
+    const differenceFromAverage = (averageHouseholdEmissions - totalCarbonFootprint).toFixed(2);
+
+    // Send results as JSON
+    res.status(200).json({
+      totalCarbonFootprint: parseFloat(totalCarbonFootprint.toFixed(2)),
+      treesNeeded: parseFloat(treesNeeded),
+      percentageComparedToAverage: parseFloat(percentageComparedToAverage),
+      differenceFromAverage: parseFloat(differenceFromAverage),
+    });
+  } catch (error) {
+    console.error("Error calculating CO2 footprint:", error);
+    res.status(500).json({ message: "Failed to calculate CO2 footprint" });
+  }
 }
