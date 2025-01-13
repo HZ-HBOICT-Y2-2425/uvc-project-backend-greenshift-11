@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllAppliances, getApplianceById, createAppliance, updateAppliance, deleteAppliancesByIDs, getNames, getApplianceUsage, getApplianceTypes} from '../controllers/applianceController.js';
+import { getAllAppliances, getApplianceById, createAppliance, updateAppliance, deleteAppliancesByIDs, getNames, getApplianceUsage, getApplianceTypes, getCO2Footprint} from '../controllers/applianceController.js';
 import { getAllRooms, getRoomById, createRoom, updateRoom, deleteRoomsByIDs, getRoomNames } from '../controllers/roomController.js';
 import { checkName } from '../middleware/exampleMiddleware.js';
 const router = express.Router();
@@ -15,6 +15,7 @@ router.delete('/appliance/:id', checkName, deleteAppliancesByIDs);
 router.get('/appliance/api/appliance-usage', checkName, getApplianceUsage);
 router.get('/appliance/api/appliance-names', checkName, getNames);
 router.get('/appliance/api/appliance-types', getApplianceTypes);
+router.get('/appliance/api/co2-footprint', checkName, getCO2Footprint);
 
 router.get('/room', checkName, getAllRooms);
 router.get('/room/:id', checkName, getRoomById);
