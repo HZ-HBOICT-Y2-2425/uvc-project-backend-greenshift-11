@@ -5,11 +5,11 @@ const router = express.Router();
 
 // create a proxy for each microservice
 const microserviceProxy = createProxyMiddleware({
-  target: 'http://microservice:3011',
+  target: 'http://localhost:3011',
   changeOrigin: true
 });
 const applianceProxy = createProxyMiddleware({
-  target: 'http://appliance:3012',
+  target: 'http://localhost:3012',
   changeOrigin: true
 });
 
