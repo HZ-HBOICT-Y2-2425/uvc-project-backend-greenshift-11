@@ -1,8 +1,13 @@
 // start.js setup from learnnode.com by Wes Bos
 import express from 'express';
 import * as dotenv from 'dotenv';
-dotenv.config({ path: 'variables.env' });
+import jwt from 'jsonwebtoken'; // Replace require with import
 import indexRouter from './routes/index.js';
+import { authenticateToken } from './middleware/exampleMiddleware.js';
+import authRoutes from './routes/authRoutes.js';
+import cors from 'cors';
+
+dotenv.config({ path: 'variables.env' });
 
 const app = express();
 
@@ -10,9 +15,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// CORS
+app.use(cors());
 app.use('/', indexRouter);
 
 app.set('port', process.env.PORT || 3010);
-const server = app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), '0.0.0.0', () => {
   console.log(`🍿 Express running → PORT ${server.address().port}`);
 });
+
+app.use('/auth', authRoutes);

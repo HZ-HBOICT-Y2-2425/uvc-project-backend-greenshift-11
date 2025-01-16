@@ -6,7 +6,7 @@ This template is being used for the HZ HBO-ICT classes about microservices. In o
 2. Clone this repo and open to the newly created folder
 3. Run `npm install` to install all the packages mentioned in package.json
 4. Run `npm run dev` to start the server.
-5. Open your browser and go to `localhost:3011` and you will see 'hi' formatted as JSON
+5. Open your browser and go to `localhost:3010` and you will see 'hi' formatted as JSON
 
 One note on running the command `npm run dev`. We use nodemon to monitor the node server and to restart the server automatically. If we use `node start.js` we have to restart the server ourselves. You could install the nodemon package globally, but in this repo we installed it locally. On Windows it might be a problem to execute the `npm run dev` command because of some security reasons. You probably have to execute the following command `Set-ExecutionPolicy RemoteSigned`. If you want to learn more about these policies please read the [Microsoft documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.2).
 

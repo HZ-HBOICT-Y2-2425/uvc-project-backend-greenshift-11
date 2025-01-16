@@ -1,0 +1,253 @@
+{
+  "meta": {
+    "title": "List of appliances",
+    "date": "December 2024"
+  },
+  "appliances": [
+    {
+      "id": 0,
+      "brand": "Samsung",
+      "type": "Refrigerator",
+      "wattage": 450,
+      "description": "A double-door fridge with a water dispenser and energy-efficient technology.",
+      "hoursPerWeek": 168,
+      "emoji": "❄"
+    },
+    {
+      "id": 1,
+      "brand": "Dyson",
+      "type": "Vacuum Cleaner",
+      "wattage": 1000,
+      "description": "A powerful cordless vacuum cleaner with HEPA filtration.",
+      "hoursPerWeek": 5,
+      "emoji": "🧹"
+    },
+    {
+      "id": 2,
+      "brand": "Sony",
+      "type": "Television",
+      "wattage": 200,
+      "description": "A 55-inch 4K Ultra HD Smart TV with HDR support.",
+      "hoursPerWeek": 40,
+      "emoji": "📺"
+    },
+    {
+      "id": 3,
+      "brand": "Philips",
+      "type": "Air Purifier",
+      "wattage": 60,
+      "description": "An air purifier with a HEPA filter and quiet operation mode.",
+      "hoursPerWeek": 50,
+      "emoji": "💨"
+    },
+    {
+      "id": 4,
+      "brand": "Whirlpool",
+      "type": "Washing Machine",
+      "wattage": 1000,
+      "description": "A front-load washing machine with multiple wash programs.",
+      "hoursPerWeek": 14,
+      "emoji": "🧺"
+    },
+    {
+      "id": 5,
+      "brand": "Yes",
+      "type": "Washing Machine",
+      "wattage": 3400,
+      "description": "zzzzz",
+      "hoursPerWeek": 111,
+      "emoji": "🧺"
+    },
+    {
+      "id": 6,
+      "brand": "Samsung",
+      "type": "Rice Cooker",
+      "wattage": 700,
+      "description": "A compact rice cooker with multiple cooking settings.",
+      "hoursPerWeek": 7,
+      "emoji": "🍚"
+    },
+    {
+      "id": 7,
+      "brand": "LG",
+      "type": "Microwave",
+      "wattage": 1100,
+      "description": "A convection microwave oven with sensor cooking.",
+      "hoursPerWeek": 10,
+      "emoji": "📡"
+    },
+    {
+      "id": 8,
+      "brand": "GE",
+      "type": "Dishwasher",
+      "wattage": 1800,
+      "description": "A quiet, energy-efficient dishwasher with multiple wash cycles.",
+      "hoursPerWeek": 15,
+      "emoji": "🍽"
+    },
+    {
+      "id": 9,
+      "brand": "abs",
+      "type": "Washing Machine",
+      "wattage": 1000,
+      "description": "qqq",
+      "hoursPerWeek": "111",
+      "emoji": "🧺"
+    },
+    {
+      "id": 10,
+      "brand": "SuzieBrand",
+      "type": "Washing Machine",
+      "wattage": 1000,
+      "description": "aaa",
+      "hoursPerWeek": "222",
+      "emoji": "🧺"
+    },
+    {
+      "id": 11,
+      "brand": "siu",
+      "type": "Washing Machine",
+      "wattage": 1000,
+      "description": "as",
+      "hoursPerWeek": "7"
+    }
+  ],
+  "rooms": [
+    {
+      "id": 0,
+      "name": "Living Room",
+      "icon": "🛋",
+      "appliances": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Kitchen",
+      "icon": "🍽",
+      "appliances": [
+        0,
+        7,
+        8
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Laundry Room",
+      "icon": "🧺",
+      "appliances": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bedroom",
+      "icon": "🛏",
+      "appliances": []
+    },
+    {
+      "id": 4,
+      "name": "Storage",
+      "icon": "📦",
+      "appliances": [
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Dining room ",
+      "icon": "🌀",
+      "appliances": [
+        7,
+        6,
+        5,
+        4,
+        8
+      ]
+    }
+  ],
+  "applianceWattages": [
+    {
+      "appliance": "Refrigerator",
+      "wattage": 450
+    },
+    {
+      "appliance": "Washing Machine",
+      "wattage": 1000
+    },
+    {
+      "appliance": "Dishwasher",
+      "wattage": 1800
+    },
+    {
+      "appliance": "Microwave Oven",
+      "wattage": 1100
+    },
+    {
+      "appliance": "Oven",
+      "wattage": 3000
+    },
+    {
+      "appliance": "Stove",
+      "wattage": 2250
+    },
+    {
+      "appliance": "Dryer",
+      "wattage": 3400
+    },
+    {
+      "appliance": "Air Conditioner",
+      "wattage": 2000
+    },
+    {
+      "appliance": "Heater",
+      "wattage": 1500
+    },
+    {
+      "appliance": "Vacuum Cleaner",
+      "wattage": 1000
+    },
+    {
+      "appliance": "Blender",
+      "wattage": 550
+    },
+    {
+      "appliance": "Toaster",
+      "wattage": 1150
+    },
+    {
+      "appliance": "Coffee Maker",
+      "wattage": 900
+    },
+    {
+      "appliance": "Slow Cooker",
+      "wattage": 225
+    },
+    {
+      "appliance": "Rice Cooker",
+      "wattage": 700
+    },
+    {
+      "appliance": "Food Processor",
+      "wattage": 550
+    },
+    {
+      "appliance": "Induction Cooktop",
+      "wattage": 2100
+    },
+    {
+      "appliance": "Electric Kettle",
+      "wattage": 1600
+    },
+    {
+      "appliance": "Deep Fryer",
+      "wattage": 1400
+    },
+    {
+      "appliance": "Electric Grill",
+      "wattage": 1500
+    }
+  ]
+}

@@ -1,7 +1,300 @@
 {
   "meta": {
-    "tile": "List of animals",
+    "tile": "List of users",
     "date": "September 2024"
   },
-  "animals" : []
+  "items": {
+    "animals": [
+      {
+        "id": 1,
+        "name": "Cow",
+        "emoji": "🐄",
+        "price": 10
+      },
+      {
+        "id": 2,
+        "name": "Sheep",
+        "emoji": "🐑",
+        "price": 15
+      },
+      {
+        "id": 3,
+        "name": "Pig",
+        "emoji": "🐖",
+        "price": 20
+      },
+      {
+        "id": 4,
+        "name": "Chicken",
+        "emoji": "🐔",
+        "price": 25
+      },
+      {
+        "id": 5,
+        "name": "Horse",
+        "emoji": "🐎",
+        "price": 30
+      },
+      {
+        "id": 6,
+        "name": "Dog",
+        "emoji": "🐕",
+        "price": 35
+      },
+      {
+        "id": 7,
+        "name": "Cat",
+        "emoji": "🐈",
+        "price": 40
+      },
+      {
+        "id": 8,
+        "name": "Rabbit",
+        "emoji": "🐇",
+        "price": 45
+      },
+      {
+        "id": 9,
+        "name": "Duck",
+        "emoji": "🦆",
+        "price": 50
+      },
+      {
+        "id": 10,
+        "name": "Goat",
+        "emoji": "🐐",
+        "price": 55
+      }
+    ],
+    "plants": [
+      {
+        "id": 1,
+        "name": "Mushroom",
+        "emoji": "🍄",
+        "price": 5
+      },
+      {
+        "id": 2,
+        "name": "Sunflower",
+        "emoji": "🌻",
+        "price": 8
+      },
+      {
+        "id": 3,
+        "name": "Cactus",
+        "emoji": "🌵",
+        "price": 12
+      },
+      {
+        "id": 4,
+        "name": "Palm Tree",
+        "emoji": "🌴",
+        "price": 18
+      },
+      {
+        "id": 5,
+        "name": "Bamboo",
+        "emoji": "🎍",
+        "price": 25
+      },
+      {
+        "id": 6,
+        "name": "Rose",
+        "emoji": "🌹",
+        "price": 30
+      },
+      {
+        "id": 7,
+        "name": "Lavender",
+        "emoji": "🌿",
+        "price": 35
+      },
+      {
+        "id": 8,
+        "name": "Tulip",
+        "emoji": "🌷",
+        "price": 40
+      },
+      {
+        "id": 9,
+        "name": "Orchid",
+        "emoji": "🌺",
+        "price": 45
+      },
+      {
+        "id": 10,
+        "name": "Bonsai",
+        "emoji": "🌳",
+        "price": 50
+      }
+    ]
+  },
+  "users": [
+    {
+      "id": 1,
+      "user": "John",
+      "email": "aydotjohn@gmail.com",
+      "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
+      "currency": 198,
+      "notes": [
+        {
+          "date": "2025-01-08",
+          "note": "notes 1"
+        },
+        {
+          "date": "2024-12-31",
+          "note": "note 2 "
+        },
+        {
+          "date": "2025-01-01",
+          "note": "note"
+        },
+        {
+          "date": "2025-01-01",
+          "note": "note"
+        },
+        {
+          "date": "2025-01-10",
+          "note": "feel i could have done better today :((("
+        },
+        {
+          "date": "2025-01-11",
+          "note": "bbfbojfbf"
+        },
+        {
+          "date": "2025-01-09",
+          "note": "this is a new note i am writing "
+        }
+      ],
+      "completedTasks": [
+        "Avoid leaving fans or heaters running in empty rooms.",
+        "Keep AC filters clean by washing or replacing them monthly.",
+        "Defrost your freezer if ice build-up is more than 1/4 inch thick to improve efficiency.",
+        "Run small appliances (like toasters) only when needed.",
+        "Monitor fridge temperature and ensure it is between 3°C and 5°C to save energy.",
+        "Use natural daylight for indoor lighting during the day.",
+        "Dry clothes outside on a clothesline instead of using the dryer."
+      ],
+      "inventory": [
+        {
+          "itemId": 2,
+          "type": "animal",
+          "quantity": 5
+        },
+        {
+          "itemId": 1,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 3,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 10,
+          "type": "animal",
+          "quantity": 2
+        },
+        {
+          "itemId": 10,
+          "type": "plant",
+          "quantity": 4
+        },
+        {
+          "itemId": 9,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 7,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 5,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 6,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 8,
+          "type": "plant",
+          "quantity": 1
+        }
+      ],
+      "streakCount": 10
+    },
+    {
+      "id": 2,
+      "user": "Joeri",
+      "email": "Joeri@harreman.nl",
+      "password": "$2b$10$3Gd0jqkoXqISolj4v.IgIOmM7CbTmnERA4ISoCS50FlYytEiN2mVe",
+      "currency": 425,
+      "inventory": [
+        {
+          "itemId": 4,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 3,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 4,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 1,
+          "type": "animal",
+          "quantity": 2
+        }
+      ],
+      "notes": [
+        {
+          "date": "2025-01-08",
+          "note": "hello\n"
+        }
+      ],
+      "completedTasks": [
+        "Switch to energy-efficient light bulbs (LED).",
+        "Monitor fridge temperature and ensure it is between 3°C and 5°C to save energy.",
+        "Monitor energy usage using apps like smart energy monitors.",
+        "Remember to not leave your devices plugged in.",
+        "Turn off the AC when not at home.",
+        "Remember to avoid leaving the fridge open too long.",
+        "Adjust your screen brightness to a lower level.",
+        "Encourage a power-off habit for all appliances before bedtime.",
+        "Keep AC filters clean by washing or replacing them monthly.",
+        "Cook with lids on pots to reduce cooking time and energy."
+      ]
+    },
+    {
+      "id": 5,
+      "user": "zmyslek",
+      "email": "zuzia.myslek@gmail.com",
+      "password": "$2b$10$XrWFF9ws2TGbTFerVBZk8eLxc9OBkzn.62.Qi3.k90pZdb0EGx.ze",
+      "currency": 500,
+      "inventory": [],
+      "notes": [],
+      "completedTasks": []
+    },
+    {
+      "id": 4,
+      "user": "innit",
+      "email": "sjdhfg@example",
+      "password": "$2b$10$BjfZK9QW3W0/WoYb4h8U6.VyK52Yre9V46t.sLdoai3qbrF7IOxJi",
+      "currency": 500,
+      "inventory": [],
+      "notes": [],
+      "completedTasks": []
+    }
+  ]
 }
