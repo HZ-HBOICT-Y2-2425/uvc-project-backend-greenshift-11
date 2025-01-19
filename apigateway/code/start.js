@@ -20,7 +20,7 @@ app.use(cors());
 app.use('/', indexRouter);
 
 app.set('port', process.env.PORT || 3010);
-const server = app.listen(app.get('port'), '0.0.0.0', () => {
+const server = app.listen(app.get('port'), () => {
   console.log(`🍿 Express running → PORT ${server.address().port}`);
 });
 

@@ -166,6 +166,16 @@
         4,
         8
       ]
+    },
+    {
+      "id": 7,
+      "name": "413",
+      "icon": "🛋️",
+      "appliances": [
+        2,
+        1,
+        5
+      ]
     }
   ],
   "applianceWattages": [

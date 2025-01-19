@@ -4,6 +4,7 @@ const { sign } = pkg;
 import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
+import { query } from "../db/mariadb.js";
 
 const dbPath = path.resolve('./db.json');
 
@@ -41,6 +42,7 @@ export async function addUser(req, res) {
    }
 
    const hashedPassword = await hash(password, 10);
+   
 
    const newUser = {
      id: db.users.length + 1,

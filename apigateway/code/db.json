@@ -135,7 +135,7 @@
       "user": "John",
       "email": "aydotjohn@gmail.com",
       "password": "$2b$10$XJN2A8HWp7wpy7YYYl2G6.RxxmTwEEJ5MNimD9aM0rl403p95XPlu",
-      "currency": 198,
+      "currency": 228,
       "notes": [
         {
           "date": "2025-01-08",
@@ -164,6 +164,10 @@
         {
           "date": "2025-01-09",
           "note": "this is a new note i am writing "
+        },
+        {
+          "date": "2025-01-16",
+          "note": "Fix sound mute button"
         }
       ],
       "completedTasks": [
@@ -173,7 +177,12 @@
         "Run small appliances (like toasters) only when needed.",
         "Monitor fridge temperature and ensure it is between 3°C and 5°C to save energy.",
         "Use natural daylight for indoor lighting during the day.",
-        "Dry clothes outside on a clothesline instead of using the dryer."
+        "Dry clothes outside on a clothesline instead of using the dryer.",
+        "Reduce unnecessary use of fans and encourage natural ventilation.",
+        "Monitor energy usage using apps like smart energy monitors.",
+        "Avoid overcharging devices like phones and laptops.",
+        "Use the washing machine only with full loads to reduce energy use.",
+        "Unplug the washing machine and dryer when not in use."
       ],
       "inventory": [
         {
@@ -225,6 +234,16 @@
           "itemId": 8,
           "type": "plant",
           "quantity": 1
+        },
+        {
+          "itemId": 3,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 1,
+          "type": "plant",
+          "quantity": 2
         }
       ],
       "streakCount": 10
@@ -295,6 +314,47 @@
       "inventory": [],
       "notes": [],
       "completedTasks": []
+    },
+    {
+      "id": 5,
+      "user": "inittt",
+      "email": "newguyhere@gmail.com",
+      "password": "$2b$10$f1aeG/nSs4hxGvs1eIR9U.Fbo8ORsoQCJMndOa/IudBbqsDRgIupq",
+      "currency": 428,
+      "inventory": [
+        {
+          "itemId": 6,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 5,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 3,
+          "type": "plant",
+          "quantity": 1
+        },
+        {
+          "itemId": 4,
+          "type": "animal",
+          "quantity": 1
+        },
+        {
+          "itemId": 1,
+          "type": "animal",
+          "quantity": 1
+        }
+      ],
+      "notes": [],
+      "completedTasks": [
+        "Keep AC filters clean by washing or replacing them monthly.",
+        "Clean the fridge coils every 6 months to maintain energy efficiency.",
+        "Replace old chargers with energy-efficient or certified ones."
+      ],
+      "streakCount": 0
     }
   ]
 }

@@ -129,7 +129,6 @@ export async function getNames(req, res) {
 export async function getApplianceTypes(req, res) {
   // Get unique appliance types from the list of appliances
   const types = [...new Set(appliances.map(appliance => appliance.type))]; // Extract unique types
-  console.log(types);
   console.log("types");
   res.status(200).json(types);
 }
